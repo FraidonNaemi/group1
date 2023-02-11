@@ -1,56 +1,54 @@
 package com.model;
 
 import java.io.Serializable;
-import java.util.*;
-import javax.xml.bind.annotation.*;
+import java.util.ArrayList;
+import java.util.List;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
-/**
- *
- * @author group1
- */
-@XmlRootElement(name = "customers")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Customers implements Serializable{
+@XmlRootElement(name = "customers")
+public class Customers implements Serializable {
+
     @XmlElement(name = "customer")
-    private List<Customer> customers;
-    
+    private List<Customer> customers = new ArrayList<>();
+
     public Customers() {
-        customers = new ArrayList();
     }
-    
-    public void add(Customer customer) {
-        this.customers.add(customer);
-    }
-    
+
     public void addAll(List<Customer> temp) {
         this.customers.addAll(temp);
     }
-    
-    public Customer customer(String customerEmail, String customerPassword) {
-        return this.customers.stream().filter(customer -> customer.login(customerEmail, customerPassword)).findAny().orElse(null);
+    public void add(Customer customer){
+     this.customers.add(customer);
     }
-    
-    public Customer customer(String customerEmail) {
-        return this.customers.stream().filter(customer -> customer.match(customerEmail)).findAny().orElse(null);
+    public Customer customer(String email, String password) {
+        return this.customers.stream().filter(customer -> customer.login(email, password)).findAny().orElse(null);
     }
-    
-    public Customer customers(int CustomerID) {
-        return this.customers.stream().filter(customer -> customer.match(CustomerID)).findAny().orElse(null);
+
+    public Customer customer(String email) {
+        return this.customers.stream().filter(customer -> customer.match(email)).findAny().orElse(null);
     }
-    
-    public List<Customer> getCustomers() {
+
+    public Customer customer(int ID) {
+        return this.customers.stream().filter(customer -> customer.match(ID)).findAny().orElse(null);
+    }
+
+    public List<Customer> getUsers() {
         return customers;
     }
-    
-    public void setCustomers(List<Customer> customers) {
+
+    public void setUsers(List<Customer> customers) {
         this.customers = customers;
     }
-    
+
     public void remove(Customer other) {
-        customers.removeIf(customer -> customer.match(other));
+        customers.removeIf(c -> c.match(other));
     }
-    
+
     public void show() {
-        this.customers.forEach(user -> System.out.println(user));
+        this.customers.forEach(c -> System.out.println(c));
     }
 }

@@ -1,3 +1,9 @@
+<%-- 
+    Document   : login
+    Created on : Jan 24, 2023, 11:33:35 AM
+    Author     : group1
+--%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -5,7 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Login</title>
         <link rel="stylesheet" href="css/style.css"/>
-        <link rel="stylesheet" href="css/login.css"/>
+        <link rel="stylesheet" href="css/loginRadioButton.css"/>
     </head>
     <body>
         <!-- Navigation Bar -->
@@ -18,26 +24,21 @@
                 <i class="fas fa-bars"></i>
             </label>
             <ul>
-                <li><a  href="index.jsp">Home</a></li>
-                <li><a class="active" href="#">Login</a></li>
+                <li><a href="index.jsp">Home</a></li>
+                <li><a class="active" href="">Login</a></li>
+                <li><a href="#">Logout</a></li>
             </ul>
         </nav>
-        
+
         <%
-            String emailError = (String) session.getAttribute("emailError");
-            String passwordError = (String) session.getAttribute("passwordError");
-            String emailPasswordError = (String) session.getAttribute("emailPasswordError");
             String userError = (String) session.getAttribute("userError");
         %>
 
         <!-- Login  -->
         <div class="wrapper-login">
             <header>Login</header>
-            <div class="error-field-login">
-                <p><%= (emailError != null && !emailError.isEmpty()) ? emailError : ""%></p>
-                <p><%= (passwordError != null && !passwordError.isEmpty()) ? passwordError : ""%></p>
-                <p><%= (emailError != null && !emailError.isEmpty() && passwordError != null && !passwordError.isEmpty()) ? emailPasswordError : ""%></p>
-                <p><%= (userError != null && !userError.isEmpty()) ? userError : ""%></p>
+            <div class="error-field-login"> 
+                <p><%= (userError != null) ? userError : ""%></p>
             </div>
 
             <form method="POST" action="/group1/LoginServlet">
@@ -77,18 +78,11 @@
             </form>
             <div class="sign-txt">Don’t have an account? <a href="#">Sign Up</a></div>
         </div>
-            
         <%
-            passwordError = "";
-            emailError = "";
-            emailPasswordError = "";
             userError = "";
-            session.setAttribute("emailError", emailError);
-            session.setAttribute("passwordError", passwordError);
-            session.setAttribute("emailPassError", emailPasswordError);
             session.setAttribute("userError", userError);
         %>
-        
+
         <!-- Footer -->
         <div class="footer">
             AFSY © 2023

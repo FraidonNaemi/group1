@@ -1,3 +1,9 @@
+<%-- 
+    Document   : index
+    Created on : Jan 24, 2023, 9:43:17 AM
+    Author     : group1
+--%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -5,7 +11,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Home</title>
         <link rel="stylesheet" href="css/style.css"/>
-        <link rel="stylesheet" href="css/index.css"/>
     </head>
     <body>
         <!-- Navigation Bar -->
@@ -19,18 +24,13 @@
             </label>
             <ul>
                 <li><a class="active" href="#">Home</a></li>
+                <li><a href="registerProduct.jsp">Register</a></li>
                 <li><a href="login.jsp">Login</a></li>
+                <li><a href="shopPage.jsp">shop</a></li>
+
             </ul>
         </nav>
-        
-        <!-- Body -->
-        <div class="content home-content">
-            <div>
-                <p class="welcome"> Welcome!</p>
-                <p class="description">AFSY Store Description</p>
-            </div>
-        </div>
-        
+
         <!-- Footer -->
         <div class="footer">
             AFSY © 2023
