@@ -118,5 +118,4 @@ public class XmlTransformer {
         StreamResult systemOutResult = new StreamResult(System.out);
         transformer.transform(xmlSource, systemOutResult);
     }
-
 }

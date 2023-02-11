@@ -29,7 +29,7 @@ public class CustomerDeleteServlet extends HttpServlet {
 
         if (customer != null) {
             try {
-                customerSqlDAO.delete(customer.getCustomerID());
+                customerSqlDAO.delete(customer.getCustomerEmail());
 
             } catch (SQLException ex) {
                 Logger.getLogger(CustomerDeleteServlet.class.getName()).log(Level.SEVERE, null, ex);

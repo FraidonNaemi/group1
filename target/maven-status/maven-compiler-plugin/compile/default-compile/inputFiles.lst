@@ -1,5 +1,6 @@
 C:\group1\src\main\java\com\controller\CustomerDeleteServlet.java
 C:\group1\src\main\java\com\model\Customer.java
+C:\group1\src\main\java\com\controller\RegexRegisterServlet.java
 C:\group1\src\main\java\com\controller\CustomerAccountServlet.java
 C:\group1\src\main\java\com\controller\RegisterServlet.java
 C:\group1\src\main\java\com\controller\CustomerLoginServlet.java
@@ -29,13 +30,18 @@ C:\group1\src\main\java\com\controller\RegexUpdateProductServlet.java
 C:\group1\src\main\java\com\model\dao\XmlTransformer.java
 C:\group1\src\main\java\com\model\Product.java
 C:\group1\src\main\java\com\model\OrderProducts.java
+C:\group1\src\main\java\com\rest\CustomerSqlService.java
 C:\group1\src\main\java\com\controller\LogoutServlet.java
 C:\group1\src\main\java\com\model\Admin.java
 C:\group1\src\main\java\com\model\Orders.java
+C:\group1\src\main\java\com\controller\DeleteCustomerServlet.java
 C:\group1\src\main\java\com\model\Products.java
 C:\group1\src\main\java\com\controller\CustomerRegisterServlet.java
+C:\group1\src\main\java\com\controller\AddCustomerServlet.java
 C:\group1\src\main\java\com\controller\LoginServlet.java
 C:\group1\src\main\java\com\controller\AdminDeleteServlet.java
 C:\group1\src\main\java\com\controller\InitServlet.java
 C:\group1\src\main\java\com\rest\OrderSqlService.java
+C:\group1\src\main\java\com\controller\AddCustomerRegexServlet.java
+C:\group1\src\main\java\com\controller\AdminCustomerAccountServlet.java
 C:\group1\src\main\java\com\model\dao\SqlDBConnector.java

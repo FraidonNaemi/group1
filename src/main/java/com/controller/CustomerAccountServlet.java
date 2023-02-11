@@ -86,8 +86,7 @@ public class CustomerAccountServlet extends HttpServlet {
                     request.getRequestDispatcher("customerAccount.jsp").include(request, response);
                 } else {
                     customer.update(customerID, customerName, customerEmail, customerPassword, customerDOB, customerPhoneNumber, customerAddress);
-                    
-                    customerSqlDAO.update(customerName, customerEmail, customerPassword, customerDOB, customerPhoneNumber, customerAddress, customerID);
+                    customerSqlDAO.update(customerName, customerPassword, customerDOB, customerPhoneNumber, customerAddress, customerID);
                     
                     session.setAttribute("customer", customer);
                     request.getRequestDispatcher("customerAccount.jsp").include(request, response);
