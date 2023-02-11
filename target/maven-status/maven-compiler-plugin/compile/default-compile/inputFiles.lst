@@ -1,34 +1,37 @@
-C:\Users\236330\Desktop\stablre befor deleting the repo\group1\src\main\java\com\app\ProductSqlApp.java
-C:\Users\236330\Desktop\stablre befor deleting the repo\group1\src\main\java\com\model\Admins.java
-C:\Users\236330\Desktop\stablre befor deleting the repo\group1\src\main\java\com\model\Product.java
-C:\Users\236330\Desktop\stablre befor deleting the repo\group1\src\main\java\com\controller\LoginServlet.java
-C:\Users\236330\Desktop\stablre befor deleting the repo\group1\src\main\java\com\model\Order.java
-C:\Users\236330\Desktop\stablre befor deleting the repo\group1\src\main\java\com\controller\LogoutServlet.java
-C:\Users\236330\Desktop\stablre befor deleting the repo\group1\src\main\java\com\model\dao\AdminSqlDAO.java
-C:\Users\236330\Desktop\stablre befor deleting the repo\group1\src\main\java\com\model\dao\SqlDBConnector.java
-C:\Users\236330\Desktop\stablre befor deleting the repo\group1\src\main\java\com\model\OrderProducts.java
-C:\Users\236330\Desktop\stablre befor deleting the repo\group1\src\main\java\com\controller\RegexRegisterProductServlet.java
-C:\Users\236330\Desktop\stablre befor deleting the repo\group1\src\main\java\com\model\dao\OrderProductSqlDAO.java
-C:\Users\236330\Desktop\stablre befor deleting the repo\group1\src\main\java\com\model\dao\OrderSqlDAO.java
-C:\Users\236330\Desktop\stablre befor deleting the repo\group1\src\main\java\com\utils\In.java
-C:\Users\236330\Desktop\stablre befor deleting the repo\group1\src\main\java\com\controller\RegexUpdateProductServlet.java
-C:\Users\236330\Desktop\stablre befor deleting the repo\group1\src\main\java\com\model\Admin.java
-C:\Users\236330\Desktop\stablre befor deleting the repo\group1\src\main\java\com\controller\ProductSearchServlet.java
-C:\Users\236330\Desktop\stablre befor deleting the repo\group1\src\main\java\com\model\Products.java
-C:\Users\236330\Desktop\stablre befor deleting the repo\group1\src\main\java\com\model\Customers.java
-C:\Users\236330\Desktop\stablre befor deleting the repo\group1\src\main\java\com\model\dao\SqlDB.java
-C:\Users\236330\Desktop\stablre befor deleting the repo\group1\src\main\java\com\controller\AdminLoginServlet.java
-C:\Users\236330\Desktop\stablre befor deleting the repo\group1\src\main\java\com\controller\CustomerLoginServlet.java
-C:\Users\236330\Desktop\stablre befor deleting the repo\group1\src\main\java\com\model\dao\CustomerSqlDAO.java
-C:\Users\236330\Desktop\stablre befor deleting the repo\group1\src\main\java\com\rest\client\ProductServiceClient.java
-C:\Users\236330\Desktop\stablre befor deleting the repo\group1\src\main\java\com\rest\OrderSqlService.java
-C:\Users\236330\Desktop\stablre befor deleting the repo\group1\src\main\java\com\controller\DeleteProductServlet.java
-C:\Users\236330\Desktop\stablre befor deleting the repo\group1\src\main\java\com\controller\RegisterProductServlet.java
-C:\Users\236330\Desktop\stablre befor deleting the repo\group1\src\main\java\com\controller\UpdateProductServlet.java
-C:\Users\236330\Desktop\stablre befor deleting the repo\group1\src\main\java\com\model\Orders.java
-C:\Users\236330\Desktop\stablre befor deleting the repo\group1\src\main\java\com\model\OrderProduct.java
-C:\Users\236330\Desktop\stablre befor deleting the repo\group1\src\main\java\com\model\Customer.java
-C:\Users\236330\Desktop\stablre befor deleting the repo\group1\src\main\java\com\model\dao\ProductSqlDAO.java
-C:\Users\236330\Desktop\stablre befor deleting the repo\group1\src\main\java\com\rest\ProductSqlService.java
-C:\Users\236330\Desktop\stablre befor deleting the repo\group1\src\main\java\com\controller\InitServlet.java
-C:\Users\236330\Desktop\stablre befor deleting the repo\group1\src\main\java\com\model\dao\XmlTransformer.java
+C:\group1\src\main\java\com\model\Customer.java
+C:\group1\src\main\java\com\controller\RegisterServlet.java
+C:\group1\src\main\java\com\controller\CustomerLoginServlet.java
+C:\group1\src\main\java\com\model\Admins.java
+C:\group1\src\main\java\com\utils\In.java
+C:\group1\src\main\java\com\controller\RegexRegisterProductServlet.java
+C:\group1\src\main\java\com\model\dao\OrderSqlDAO.java
+C:\group1\src\main\java\com\model\dao\AdminSqlDAO.java
+C:\group1\src\main\java\com\controller\DeleteProductServlet.java
+C:\group1\src\main\java\com\controller\AdminRegisterServlet.java
+C:\group1\src\main\java\com\rest\client\ProductServiceClient.java
+C:\group1\src\main\java\com\model\Customers.java
+C:\group1\src\main\java\com\rest\ProductSqlService.java
+C:\group1\src\main\java\com\controller\ProductSearchServlet.java
+C:\group1\src\main\java\com\model\Order.java
+C:\group1\src\main\java\com\model\dao\CustomerSqlDAO.java
+C:\group1\src\main\java\com\model\dao\SqlDB.java
+C:\group1\src\main\java\com\model\dao\OrderProductSqlDAO.java
+C:\group1\src\main\java\com\app\ProductSqlApp.java
+C:\group1\src\main\java\com\model\dao\ProductSqlDAO.java
+C:\group1\src\main\java\com\controller\RegisterProductServlet.java
+C:\group1\src\main\java\com\controller\UpdateProductServlet.java
+C:\group1\src\main\java\com\controller\AdminLoginServlet.java
+C:\group1\src\main\java\com\model\OrderProduct.java
+C:\group1\src\main\java\com\controller\RegexUpdateProductServlet.java
+C:\group1\src\main\java\com\model\dao\XmlTransformer.java
+C:\group1\src\main\java\com\model\Product.java
+C:\group1\src\main\java\com\model\OrderProducts.java
+C:\group1\src\main\java\com\controller\LogoutServlet.java
+C:\group1\src\main\java\com\model\Admin.java
+C:\group1\src\main\java\com\model\Orders.java
+C:\group1\src\main\java\com\model\Products.java
+C:\group1\src\main\java\com\controller\CustomerRegisterServlet.java
+C:\group1\src\main\java\com\controller\LoginServlet.java
+C:\group1\src\main\java\com\controller\InitServlet.java
+C:\group1\src\main\java\com\rest\OrderSqlService.java
+C:\group1\src\main\java\com\model\dao\SqlDBConnector.java
