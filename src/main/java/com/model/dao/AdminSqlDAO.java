@@ -22,9 +22,9 @@ public class AdminSqlDAO {
 
     private Statement st;
     private PreparedStatement updateSt;
-    private String updateQuery = "UPDATE store.admin SET ADMINNAME=?,ADMINEMAIL=?,ADMINPASSWORD=?,ADMINDOB=?,ADMINPHONENUMBER=?,ADMINADDRESS=? WHERE ADMINID=?";
+    private String updateQuery = "UPDATE store.admins SET ADMINNAME=?,ADMINEMAIL=?,ADMINPASSWORD=?,ADMINDOB=?,ADMINPHONENUMBER=?,ADMINADDRESS=? WHERE ADMINID=?";
     private PreparedStatement deleteSt;
-    private String deleteQuery = "DELETE FROM store.admin WHERE adminID=?";
+    private String deleteQuery = "DELETE FROM store.admins WHERE adminID=?";
 
     public AdminSqlDAO(Connection connection) throws SQLException {
         this.st = connection.createStatement();
@@ -96,7 +96,7 @@ public class AdminSqlDAO {
 
     // Read Query - Read One by Email and Password
     public Admin login(String email, String password) throws SQLException {
-        String query = "SELECT * FROM store.admin WHERE adminEmail='" + email + "' AND adminPassword='" + password + "'";
+        String query = "SELECT * FROM store.admins WHERE adminEmail='" + email + "' AND adminPassword='" + password + "'";
         ResultSet rs = st.executeQuery(query);
         while (rs.next()) {
             String currentEmail = rs.getString(3);

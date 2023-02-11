@@ -53,6 +53,18 @@
         <servlet-name>RegexUpdateProductServlet</servlet-name>
         <servlet-class>com.controller.RegexUpdateProductServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>com.controller.RegisterServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CustomerRegisterServlet</servlet-name>
+        <servlet-class>com.controller.CustomerRegisterServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminRegisterServlet</servlet-name>
+        <servlet-class>com.controller.AdminRegisterServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterProductServlet</servlet-name>
         <url-pattern>/RegisterProductServlet</url-pattern>
@@ -100,6 +112,18 @@
     <servlet-mapping>
         <servlet-name>RegexUpdateProductServlet</servlet-name>
         <url-pattern>/RegexUpdateProductServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/RegisterServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CustomerRegisterServlet</servlet-name>
+        <url-pattern>/CustomerRegisterServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminRegisterServlet</servlet-name>
+        <url-pattern>/AdminRegisterServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
