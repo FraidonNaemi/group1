@@ -1,129 +1,133 @@
 package com.model;
 
 import java.io.Serializable;
-import java.util.*;
-import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 
-/**
- *
- * @author group1
- */
-@XmlRootElement(name = "customer")
+
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Customer implements Serializable{
-    private int customerID;
+@XmlRootElement(name = "customer")
+public class Customer implements Serializable {
+
+    private int ID;
     private String customerName;
     private String customerEmail;
     private String customerPassword;
     private String customerDOB;
     private String customerPhoneNumber;
     private String customerAddress;
-    
-    public Customer() { }
 
-    public Customer(int customerID, String customerName, String customerEmail, String customerPassword, String customerDOB, String customerPhoneNumber, String customerAddress) {
-        this.customerID = customerID;
+    public Customer() {
+    }
+
+    public void update(int ID, String name, String email, String password, String DOB, String phonenumber, String address) {
+        this.ID = ID;
+        this.customerName = name;
+        this.customerEmail = email;
+        this.customerPassword = password;
+        this.customerDOB = DOB;
+        this.customerPhoneNumber = phonenumber;
+        this.customerAddress = address;
+
+    }
+
+    public Customer(String name, String email, String password, String DOB, String phonenumber, String address) {
+        this.customerName = name;
+        this.customerEmail = email;
+        this.customerPassword = password;
+        this.customerDOB = DOB;
+        this.customerPhoneNumber = phonenumber;
+        this.customerAddress = address;
+
+    }
+
+    public Customer(int ID, String name, String email, String password, String DOB, String phonenumber, String address) {
+        this.ID = ID;
+        this.customerName = name;
+        this.customerEmail = email;
+        this.customerPassword = password;
+        this.customerDOB = DOB;
+        this.customerPhoneNumber = phonenumber;
+        this.customerAddress = address;
+
+    }
+
+    public void setName(String customerName) {
         this.customerName = customerName;
-        this.customerEmail = customerEmail;
-        this.customerPassword = customerPassword;
-        this.customerDOB = customerDOB;
-        this.customerPhoneNumber = customerPhoneNumber;
-        this.customerAddress = customerAddress;
-    }
-    
-    public Customer(String customerName, String customerEmail, String customerPassword, String customerDOB, String customerPhoneNumber, String customerAddress) {
-        this.customerName = customerName;
-        this.customerEmail = customerEmail;
-        this.customerPassword = customerPassword;
-        this.customerDOB = customerDOB;
-        this.customerPhoneNumber = customerPhoneNumber;
-        this.customerAddress = customerAddress;
-    }
-    
-    public void update(int customerID, String customerName, String customerEmail, String customerPassword, String customerDOB, String customerPhoneNumber, String customerAddress) {
-        this.customerID = customerID;
-        this.customerName = customerName;
-        this.customerEmail = customerEmail;
-        this.customerPassword = customerPassword;
-        this.customerDOB = customerDOB;
-        this.customerPhoneNumber = customerPhoneNumber;
-        this.customerAddress = customerAddress;
-    }
-    
-    public boolean login(String customerEmail, String customerPassword) {
-        return this.customerEmail.equals(customerEmail) && this.customerPassword.equals(customerPassword);
-    }
-    
-    public boolean match(int customerID) {
-        return this.customerID == customerID;
-    }
-    
-    public boolean match(String customerEmail) {
-        return this.customerEmail.equals(customerEmail);
-    }
-    
-    public boolean match(Customer other) {
-        return this.customerID == other.customerID;
     }
 
-    public int getCustomerID() {
-        return customerID;
-    }
-
-    public void setCustomerID(int customerID) {
-        this.customerID = customerID;
-    }
-
-    public String getCustomerName() {
+    public String getName() {
         return customerName;
     }
 
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
+    public boolean login(String email, String password) {
+        return this.customerEmail.equals(email) && this.customerPassword.equals(password);
     }
 
-    public String getCustomerEmail() {
+    public boolean match(int ID) {
+        return this.ID == ID;
+    }
+
+    public boolean match(String email) {
+        return this.customerEmail.equals(email);
+    }
+
+    public boolean match(Customer other) {
+        return this.ID == other.ID;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    public String getEmail() {
         return customerEmail;
     }
 
-    public void setCustomerEmail(String customerEmail) {
-        this.customerEmail = customerEmail;
+    public void setEmail(String email) {
+        this.customerEmail = email;
     }
 
-    public String getCustomerPassword() {
+    public String getPassword() {
         return customerPassword;
     }
 
-    public void setCustomerPassword(String customerPassword) {
-        this.customerPassword = customerPassword;
+    public void setPassword(String password) {
+        this.customerPassword = password;
     }
 
-    public String getCustomerDOB() {
+    public String getDOB() {
         return customerDOB;
     }
 
-    public void setCustomerDOB(String customerDOB) {
-        this.customerDOB = customerDOB;
+    public void setDOB(String DOB) {
+        this.customerDOB = DOB;
     }
 
-    public String getCustomerPhoneNumber() {
+    public String getPhonenumber() {
         return customerPhoneNumber;
     }
 
-    public void setCustomerPhoneNumber(String customerPhoneNumber) {
-        this.customerPhoneNumber = customerPhoneNumber;
+    public void setPhonenumber(String phonenumber) {
+        this.customerPhoneNumber = phonenumber;
     }
 
-    public String getCustomerAddress() {
+    public String getAddress() {
         return customerAddress;
     }
 
-    public void setCustomerAddress(String customerAddress) {
-        this.customerAddress = customerAddress;
+    public void setAddress(String address) {
+        this.customerAddress = address;
     }
-    
+
     @Override
-    public String toString() { 
-        return customerID + "\t" + customerName + "\t" + customerEmail + "\t" + customerDOB + "\t" + customerPhoneNumber + "\t" + customerAddress;
+    public String toString() {
+        return "Customer{" + "ID=" + ID + ", name=" + customerName + ", email=" + customerEmail + ", password=" + customerPassword + ", DOB=" + customerDOB + ", phonenumber=" + customerPhoneNumber + ", address=" + customerAddress + '}';
     }
+
 }

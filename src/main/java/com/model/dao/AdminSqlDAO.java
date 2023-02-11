@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.model.dao;
 
 import com.model.Admin;
@@ -6,12 +11,18 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
+/**
+ *
+ * @author 236367
+ */
 public class AdminSqlDAO {
 
     private Statement st;
     private PreparedStatement updateSt;
-    private String updateQuery = "UPDATE store.admin SET adminName=?, adminPassword=?, adminDOB=?, adminphoneNumber=?, adminAddress=? WHERE adminID=?";
+    private String updateQuery = "UPDATE store.admin SET ADMINNAME=?,ADMINEMAIL=?,ADMINPASSWORD=?,ADMINDOB=?,ADMINPHONENUMBER=?,ADMINADDRESS=? WHERE ADMINID=?";
     private PreparedStatement deleteSt;
     private String deleteQuery = "DELETE FROM store.admin WHERE adminID=?";
 
@@ -21,83 +32,113 @@ public class AdminSqlDAO {
         this.deleteSt = connection.prepareStatement(deleteQuery);
     }
 
-    // Create Admin Query
-    public void create( String adminName, String adminEmail, String adminPassword, String adminDOB, String adminPhoneNumber, String adminAddress) throws SQLException {
-        String columns = "INSERT INTO store.admin(adminName, adminEmail, adminPassword, adminDOB, adminPhoneNumber, adminAddress)";
-        String values = "VALUES('" + adminName + "','" + adminEmail + "','" + adminPassword + "','" + adminDOB + "','" + adminPhoneNumber + "','" + adminAddress + "')";
-        
+    // Create Query
+    public void create(String name, String email, String password, String DOB, String phonenumber, String address) throws SQLException {
+        String columns = "INSERT INTO store.admin(adminName,adminEmail,adminPassword,adminDOB,adminPhoneNumber,adminAddress)";
+        String values = "VALUES('" + name + "', '" + email + "','" + password + "','" + DOB + "','" + phonenumber + "','" + address + "')";
+        System.out.println(values);
         st.executeUpdate(columns + values);
     }
 
-    // Read Admin Query - Read One
-    public Admin getAdmin(int adminID) throws SQLException {
-        String query = "SELECT * FROM store.admin WHERE adminID=" + adminID;
+    public void update(String name, String email, String password, String DOB, String phonenumber, String address,
+             int ID) throws SQLException {
+        updateSt.setString(1, name);
+        updateSt.setString(2, email);
+        updateSt.setString(3, password);
+        updateSt.setString(4, DOB);
+        updateSt.setString(5, phonenumber);
+        updateSt.setString(6, address);
+        updateSt.setString(7, Integer.toString(ID));
+        int row = updateSt.executeUpdate();
+        System.out.println("Row " + row + " Admin has been successflly updated");
+    }
+
+    // Read Query - Read One
+    public Admin getAdmin(int ID) throws SQLException {
+        String query = "SELECT * FROM store.admin WHERE adminID=" + ID;
         ResultSet rs = st.executeQuery(query);
-        
         while (rs.next()) {
             int currentID = Integer.parseInt(rs.getString(1));
 
-            if (adminID == currentID) {
-                String adminName = rs.getString(2);
-                String adminEmail = rs.getString(3);
-                String adminPassword = rs.getString(4);
-                String adminDOB = rs.getString(5);
-                String adminPhoneNumber = rs.getString(6);
-                String adminAddress = rs.getString(7);
-                
-                return new Admin(adminID, adminName, adminEmail, adminPassword, adminDOB, adminPhoneNumber, adminAddress);
+            if (ID == currentID) {
+
+                String name = rs.getString(2);
+                String email = rs.getString(3);
+                String password = rs.getString(4);
+                String dob = rs.getString(5);
+                String phonenumber = rs.getString(6);
+                String address = rs.getString(7);
+                return new Admin(ID, name, email, password, dob, phonenumber, address);
             }
         }
-        
         return null;
     }
 
-    // Read Admin Query - Read One
-    public Admin getAdmin(String admin_email) throws SQLException {
-        String query = "SELECT * FROM store.admin WHERE adminEmail='" + admin_email + "'";
+    // Read Query - Read One
+    public Admin getAdmin(String email) throws SQLException {
+        String query = "SELECT * FROM store.admin WHERE adminEmail='" + email + "'";
         ResultSet rs = st.executeQuery(query);
-        
         while (rs.next()) {
             String currentEmail = rs.getString(3);
 
-            if (admin_email.equals(currentEmail)) {
-                int adminID = Integer.parseInt(rs.getString(1));
-                String adminName = rs.getString(2);
-                String adminEmail = rs.getString(3);
-                String adminPassword = rs.getString(4);
-                String adminDOB = rs.getString(5);
-                String adminPhoneNumber = rs.getString(6);
-                String adminAddress = rs.getString(7);
-                
-                return new Admin(adminID, adminName, adminEmail, adminPassword, adminDOB, adminPhoneNumber, adminAddress);
+            if (email.equals(currentEmail)) {
+                int ID = Integer.parseInt(rs.getString(1));
+                String name = rs.getString(2);
+                String password = rs.getString(4);
+                String dob = rs.getString(5);
+                String phonenumber = rs.getString(6);
+                String address = rs.getString(7);
+                return new Admin(ID, name, email, password, dob, phonenumber, address);
             }
         }
-        
         return null;
     }
 
-    // Read Admin Query - Read One by Email and Password
-    public Admin login(String admin_email, String admin_password) throws SQLException {
-        String query = "SELECT * FROM store.admin WHERE adminEmail='" + admin_email + "' AND adminPassword='" + admin_password + "'";
+    // Read Query - Read One by Email and Password
+    public Admin login(String email, String password) throws SQLException {
+        String query = "SELECT * FROM store.admin WHERE adminEmail='" + email + "' AND adminPassword='" + password + "'";
         ResultSet rs = st.executeQuery(query);
-        
         while (rs.next()) {
             String currentEmail = rs.getString(3);
             String currentPassword = rs.getString(4);
 
-            if (admin_email.equals(currentEmail) && admin_password.equals(currentPassword)) {
-                int adminID = Integer.parseInt(rs.getString(1));
-                String adminName = rs.getString(2);
-                String adminEmail = rs.getString(3);
-                String adminPassword = rs.getString(4);
-                String adminDOB = rs.getString(5);
-                String adminPhoneNumber = rs.getString(6);
-                String adminAddress = rs.getString(7);
-                
-                return new Admin(adminID, adminName, adminEmail, adminPassword, adminDOB, adminPhoneNumber, adminAddress);
+            if (email.equals(currentEmail) && password.equals(currentPassword)) {
+                int ID = Integer.parseInt(rs.getString(1));
+                String name = rs.getString(2);
+                String dob = rs.getString(5);
+                String phonenumber = rs.getString(6);
+
+                String address = rs.getString(7);
+                return new Admin(ID, name, email, password, dob, phonenumber, address);
+
             }
         }
-        
         return null;
+
+    }
+//Delete Query - by ID
+
+    public void delete(int ID) throws SQLException {
+        deleteSt.setString(1, "" + ID);
+        int x = deleteSt.executeUpdate();
+
+        System.out.println("User has been successflly deleted");
+    }
+    //Read Admins Query - Read All
+    public List<Admin> getAdmins() throws SQLException {
+        String query = "SELECT * FROM store.admin";
+        ResultSet rs = st.executeQuery(query);
+        List<Admin> temp = new ArrayList<>();
+        while (rs.next()) {
+            int adminID = Integer.parseInt(rs.getString(1));
+                String name = rs.getString(2);
+                String email = rs.getString(3);
+                String password = rs.getString(4);
+                String DOB = rs.getString(5);
+                String phonenumber = rs.getString(6);
+                String address = rs.getString(7);
+            temp.add(new Admin(adminID, name,email, password, DOB, phonenumber, address));
+        }
+        return temp;
     }
 }

@@ -9,6 +9,8 @@ public class SqlDBConnector extends SqlDB {
     private Connection connection;
 
     public SqlDBConnector() throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException, IOException {
+        // Class.forName(driver);
+        // super.connection = DriverManager.getConnection(URL, dbuser, dbpassword);
 
         this.connection = super.openConnection();
     }

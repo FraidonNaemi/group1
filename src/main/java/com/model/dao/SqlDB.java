@@ -17,10 +17,10 @@ public class SqlDB {
     protected Connection openConnection() throws FileNotFoundException, ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException, IOException {
         Map<String, String> variables = System.getenv();
         String password = variables.get("dbpassword");
-        
-        if(password == null)
-            password = variables.get("DBPASSWORD");
-        
+        //String password = "password";
+        if(password == null){
+          password = variables.get("DBPASSWORD"); 
+        }
         InputStream propsInputStream = new FileInputStream("C:\\group1\\src\\db.properties");
         Properties properties = new Properties();
         properties.load(propsInputStream);

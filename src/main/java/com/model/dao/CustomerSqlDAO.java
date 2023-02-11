@@ -1,7 +1,11 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.model.dao;
 
 import com.model.Customer;
-import com.model.Customers;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,14 +14,17 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ *
+ * @author 236367
+ */
 public class CustomerSqlDAO {
 
     private Statement st;
     private PreparedStatement updateSt;
-    private String updateQuery = "UPDATE store.customer SET customerName=?, customerPassword=?, customerDOB=?, customerPhoneNumber=?, customerAddress=? WHERE customerID=?";
+    private String updateQuery = "UPDATE store.customer SET CUSTOMERNAME=?,CUSTOMEREMAIL=?,CUSTOMERPASSWORD=?,CUSTOMERDOB=?,CUSTOMERPHONENUMBER=?,CUSTOMERADDRESS=? WHERE CUSTOMERID=?";
     private PreparedStatement deleteSt;
-    private String deleteQuery = "DELETE FROM store.customer WHERE customerEmail=?";
+    private String deleteQuery = "DELETE FROM store.customer WHERE customerID=?";
 
     public CustomerSqlDAO(Connection connection) throws SQLException {
         this.st = connection.createStatement();
@@ -25,133 +32,116 @@ public class CustomerSqlDAO {
         this.deleteSt = connection.prepareStatement(deleteQuery);
     }
 
-    // Create Customer Query
-    public void create(String customerName, String customerEmail, String customerPassword, String customerDOB, String customerPhoneNumber, String customerAddress) throws SQLException {
-        String columns = "INSERT INTO store.customer(customerName, customerEmail, customerPassword, customerDOB, customerPhoneNumber, customerAddress)";
-        String values = "VALUES('" + customerName + "','" + customerEmail + "','" + customerPassword + "','" + customerDOB + "','" + customerPhoneNumber + "','" + customerAddress + "')";
-        
+    // Create Query
+    public void create(String name, String email, String password, String DOB, String phonenumber, String address) throws SQLException {
+        String columns = "INSERT INTO store.customer(customerName,customerEmail,customerPassword,customerDOB,customerPhoneNumber,customerAddress)";
+        String values = "VALUES('" + name + "', '" + email + "','" + password + "','" + DOB + "','" + phonenumber + "','" + address + "')";
+        System.out.println(values);
         st.executeUpdate(columns + values);
     }
     
-    public void create(String customerEmail) throws SQLException {
-        String columns = "INSERT INTO store.customer(customerName, customerEmail, customerPassword, customerDOB, customerPhoneNumber, customerAddress)";
-        String values = "VALUES('Ad Astra','" + customerEmail + "','Helload123','2000-02-03', '0450179669', '51 George St, Sydney NSW 2002')";
-        st.executeUpdate(columns + values);
+
+
+    public void update(String name, String email, String password, String DOB, String phonenumber, String address,
+             int ID) throws SQLException {
+        updateSt.setString(1, name);
+        updateSt.setString(2, email);
+        updateSt.setString(3, password);
+        updateSt.setString(4, DOB);
+        updateSt.setString(5, phonenumber);
+        updateSt.setString(6, address);
+        updateSt.setString(7, Integer.toString(ID));
+        int row = updateSt.executeUpdate();
+        System.out.println("Row " + row + " Customer has been successflly updated");
     }
-    
-    // Read Customer Query - Read One
-    public Customer getCustomer(int customerID) throws SQLException {
-        String query = "SELECT * FROM store.customer WHERE customerID=" + customerID;
+
+    // Read Query - Read One
+    public Customer getCustomer(int ID) throws SQLException {
+        String query = "SELECT * FROM store.customer WHERE customerID=" + ID;
         ResultSet rs = st.executeQuery(query);
-        
         while (rs.next()) {
             int currentID = Integer.parseInt(rs.getString(1));
 
-            if (customerID == currentID) {
-                String customerName = rs.getString(2);
-                String customerEmail = rs.getString(3);
-                String customerPassword = rs.getString(4);
-                String customerDOB = rs.getString(5);
-                String customerPhoneNumber = rs.getString(6);
-                String customerAddress = rs.getString(7);
-                
-                return new Customer(customerID, customerName, customerEmail, customerPassword, customerDOB, customerPhoneNumber, customerAddress);
+            if (ID == currentID) {
+
+                String name = rs.getString(2);
+                String email = rs.getString(3);
+                String password = rs.getString(4);
+                String dob = rs.getString(5);
+                String phonenumber = rs.getString(6);
+                String address = rs.getString(7);
+                return new Customer(ID, name, email, password, dob, phonenumber, address);
             }
         }
-        
         return null;
     }
 
-    // Read Customer Query - Read One
-    public Customer getCustomer(String customer_email) throws SQLException {
-        String query = "SELECT * FROM store.customer WHERE customerEmail='" + customer_email + "'";
+    // Read Query - Read One
+    public Customer getCustomer(String email) throws SQLException {
+        String query = "SELECT * FROM store.customer WHERE customerEmail='" + email + "'";
         ResultSet rs = st.executeQuery(query);
-        
         while (rs.next()) {
             String currentEmail = rs.getString(3);
 
-            if (customer_email.equals(currentEmail)) {
-                int customerID = Integer.parseInt(rs.getString(1));
-                String customerName = rs.getString(2);
-                String customerEmail = rs.getString(3);
-                String customerPassword = rs.getString(4);
-                String customerDOB = rs.getString(5);
-                String customerPhoneNumber = rs.getString(6);
-                String customerAddress = rs.getString(7);
-                
-                return new Customer(customerID, customerName, customerEmail, customerPassword, customerDOB, customerPhoneNumber, customerAddress);
+            if (email.equals(currentEmail)) {
+                int ID = Integer.parseInt(rs.getString(1));
+                String name = rs.getString(2);
+                String password = rs.getString(4);
+                String dob = rs.getString(5);
+                String phonenumber = rs.getString(6);
+                String address = rs.getString(7);
+                return new Customer(ID, name, email, password, dob, phonenumber, address);
             }
         }
-        
         return null;
     }
-    
-    // Read Customer Query - Read One by Name
-    public Customer login(String customer_email, String customer_password) throws SQLException {
-        String query = "SELECT * FROM store.customer WHERE customerEmail='" + customer_email+ "' AND customerPassword='" + customer_password + "'";
+
+    // Read Query - Read One by Email and Password
+    public Customer login(String email, String password) throws SQLException {
+        String query = "SELECT * FROM store.customer WHERE customerEmail='" + email + "' AND customerPassword='" + password + "'";
         ResultSet rs = st.executeQuery(query);
-        
         while (rs.next()) {
             String currentEmail = rs.getString(3);
             String currentPassword = rs.getString(4);
 
-            if (customer_email.equals(currentEmail) && customer_password.equals(currentPassword)) {
-                int customerID = Integer.parseInt(rs.getString(1));
-                String customerName = rs.getString(2);
-                String customerEmail = rs.getString(3);
-                String customerPassword = rs.getString(4);
-                String customerDOB = rs.getString(5);
-                String customerPhoneNumber = rs.getString(6);
-                String customerAddress = rs.getString(7);
-                
-                return new Customer(customerID, customerName, customerEmail, customerPassword, customerDOB, customerPhoneNumber, customerAddress);
+            if (email.equals(currentEmail) && password.equals(currentPassword)) {
+                int ID = Integer.parseInt(rs.getString(1));
+                String name = rs.getString(2);
+                String dob = rs.getString(5);
+                String phonenumber = rs.getString(6);
+
+                String address = rs.getString(7);
+                return new Customer(ID, name, email, password, dob, phonenumber, address);
+
             }
         }
-        
         return null;
-    }
 
-    // Read Customers Query - Read All
+    }
+//Delete Query - by ID
+
+    public void delete(int ID) throws SQLException {
+        deleteSt.setString(1, "" + ID);
+        int x = deleteSt.executeUpdate();
+
+        System.out.println("User has been successflly deleted");
+    }
+    //Read Customers Query - Read All
     public List<Customer> getCustomers() throws SQLException {
         String query = "SELECT * FROM store.customer";
         ResultSet rs = st.executeQuery(query);
         List<Customer> temp = new ArrayList<>();
-
+        
         while (rs.next()) {
             int customerID = Integer.parseInt(rs.getString(1));
-            String customerName = rs.getString(2);
-            String customerEmail = rs.getString(3);
-            String customerPassword = rs.getString(4);
-            String customerDOB = rs.getString(5);
-            String customerPhoneNumber = rs.getString(6);
-            String customerAddress = rs.getString(7);
-            
-            temp.add(new Customer(customerID, customerName, customerEmail, customerPassword, customerDOB, customerPhoneNumber, customerAddress));
+                String name = rs.getString(2);
+                String email = rs.getString(3);
+                String password = rs.getString(4);
+                String DOB = rs.getString(5);
+                String phonenumber = rs.getString(6);
+                String address = rs.getString(7);
+            temp.add(new Customer(customerID, name,email, password, DOB, phonenumber, address));
         }
-        
         return temp;
-    }
-   
-    // Update Customer Query (Name, Password) by ID
-    public void update(String customerName, String customerPassword, String customerDOB, String customerPhoneNumber, String customerAddress, int customerID) throws SQLException {
-        updateSt.setString(1, customerName);
-        updateSt.setString(2, customerPassword);
-        updateSt.setString(3, customerDOB);
-        updateSt.setString(4, customerPhoneNumber);
-        updateSt.setString(5, customerAddress);
-        updateSt.setString(6, Integer.toString(customerID));
-        
-        int row = updateSt.executeUpdate();
-        
-        System.out.println("Row " + row + " has been successflly updated");
-    }
-
-    // Delete Customer Query - by email
-    public void delete(String customerEmail) throws SQLException {
-        deleteSt.setString(1, customerEmail);
-        
-        int row = deleteSt.executeUpdate();
-        
-        System.out.println("Row " + row + " has been successflly deleted");
     }
 }
