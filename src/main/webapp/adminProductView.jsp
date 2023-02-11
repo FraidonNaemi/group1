@@ -27,6 +27,7 @@
             <ul>
                 <li><a href="index.jsp">Home</a></li>
                 <li><a class="active" href="#">Admin</a></li>
+                <li><a href="registerProduct.jsp">Add Product</a></li>
                 <li><a href="/group1/LogoutServlet">Logout</a></li>
             </ul>
         </nav>

@@ -19,7 +19,8 @@
             <ul>
                 <li><a class="active" href="#">Dashboard</a></li>
                 <li><a href="adminAccount.jsp">Account</a></li>
-                 <li><a href="adminProductView.jsp">Temp Product View</a></li>
+                <li><a href="adminProductView.jsp">Product Management</a></li>
+                <li><a href="adminCustomerView.jsp">Customer Management</a></li>
                 <li><a href="/group1/LogoutServlet">Logout</a></li>
             </ul>
         </nav>

@@ -1,15 +1,19 @@
 com\model\Customers.class
+com\controller\DeleteCustomerServlet.class
 com\model\Admins.class
 com\controller\LoginServlet.class
 com\controller\RegexUpdateProductServlet.class
 com\controller\UpdateProductServlet.class
+com\controller\AddCustomerServlet.class
 com\controller\CustomerDeleteServlet.class
 com\model\Orders.class
 com\controller\AdminLoginServlet.class
 com\controller\CustomerRegisterServlet.class
 com\model\Products.class
+com\controller\AdminCustomerAccountServlet.class
 com\controller\InitServlet.class
 com\controller\CustomerLoginServlet.class
+com\rest\CustomerSqlService.class
 com\rest\ProductSqlService.class
 com\controller\RegisterProductServlet.class
 com\model\dao\ProductSqlDAO.class
@@ -18,6 +22,7 @@ com\model\Order.class
 com\model\dao\AdminSqlDAO.class
 com\controller\AdminAccountServlet.class
 com\model\dao\OrderProductSqlDAO.class
+com\controller\AddCustomerRegexServlet.class
 com\controller\ProductSearchServlet.class
 com\controller\RegexRegisterProductServlet.class
 com\controller\DeleteProductServlet.class
@@ -39,3 +44,4 @@ com\controller\CustomerAccountServlet.class
 com\controller\LogoutServlet.class
 com\model\dao\OrderSqlDAO.class
 com\model\dao\XmlTransformer.class
+com\controller\RegexRegisterServlet.class

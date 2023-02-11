@@ -81,6 +81,22 @@
         <servlet-name>CustomerDeleteServlet</servlet-name>
         <servlet-class>com.controller.CustomerDeleteServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddCustomerServlet</servlet-name>
+        <servlet-class>com.controller.AddCustomerServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminCustomerAccountServlet</servlet-name>
+        <servlet-class>com.controller.AdminCustomerAccountServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteCustomerServlet</servlet-name>
+        <servlet-class>com.controller.DeleteCustomerServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddCustomerRegexServlet</servlet-name>
+        <servlet-class>com.controller.AddCustomerRegexServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterProductServlet</servlet-name>
         <url-pattern>/RegisterProductServlet</url-pattern>
@@ -156,6 +172,22 @@
     <servlet-mapping>
         <servlet-name>CustomerDeleteServlet</servlet-name>
         <url-pattern>/CustomerDeleteServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddCustomerServlet</servlet-name>
+        <url-pattern>/AddCustomerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminCustomerAccountServlet</servlet-name>
+        <url-pattern>/AdminCustomerAccountServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteCustomerServlet</servlet-name>
+        <url-pattern>/DeleteCustomerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddCustomerRegexServlet</servlet-name>
+        <url-pattern>/AddCustomerRegexServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
