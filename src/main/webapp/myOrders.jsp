@@ -30,57 +30,22 @@
                 <i class="fas fa-bars"></i>
             </label>
             <ul>
-                <li><a class="active" href="#">Home</a></li>
-                <li><a href="/group1/OrderCreateServlet">create order</a></li>
-                <li><a href="/group1/LougoutServlet">Logout</a></li>
-                
+                <li><a class="active" href="index.jsp">Home</a></li>
+                <li><a href="/group1/CreateOrderServlet">Checkout</a></li>
+                <li><a href="/group1/LogoutServlet">Logout</a></li>
             </ul>
         </nav>
-
         <div>
             <!--                view all orders-->
             <%
                 Customer customer = (Customer) session.getAttribute("customer");
-            %>
-
-
-
-            <% String xslPath = application.getRealPath("/xsl/orders.xsl");%>
-
-            <%
+                String xslPath = application.getRealPath("/xsl/orders.xsl");
                 OrderSqlDAO orderSqlDAO = (OrderSqlDAO) session.getAttribute("orderSqlDAO");
-            %>
-
-
-
-            <%
                 Orders orders = new Orders();
-                orders.addAll(orderSqlDAO.getAllOrders(customer.getID()));
+                orders.addAll(orderSqlDAO.getAllOrders(customer.getCustomerID()));
                 XmlTransformer transformer = new XmlTransformer();
                 transformer.transform(xslPath, orders, new StreamResult(out));
             %>
-
-
-            <!--                delete one order(cancel an order )-->
-            <%
-//                Order order = null;
-//                int orderID = Integer.parseInt(request.getParameter("orderID"));
-//
-//                orderSqlDAO = (OrderSqlDAO) session.getAttribute("orderSqlDAO");
-//                Order order = orderSqlDAO.getOrderByID(orderID, customer.getCustomerID());
-//                order = (Order) session.getAttribute("order");
-
-            %>
-
-            <!--            resetting the uri var-->
-            <% //                orderID = "";
-//                session.setAttribute("orderID", orderID);
-            %>
-
-            <!-- Checkout the order -->
-
-
-
             <!-- Footer -->
             <div class="footer">
                 AFSY © 2023

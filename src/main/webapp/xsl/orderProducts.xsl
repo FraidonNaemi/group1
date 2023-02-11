@@ -17,24 +17,21 @@
         <table class="content-table" style="margin-top:100px!important;">
             <thead>
                 <tr>
-                    <th colspan="3">
-                        <h3>My Order</h3>
-                    </th>
+                    <th class="td-title">OrderID</th>
+                    <th class="td-title">ProductID</th>
+                    <th class="td-title">quantity</th>
                 </tr>
             </thead>
+            
             <tbody>
-                <tr>
-                    <td class="td-title">OrderID</td>
-                    <td class="td-title">ProductID</td>
-                    <td class="td-title">quantity</td>
-                </tr>
+                
                 <xsl:apply-templates/>
             </tbody>
         </table>
     </xsl:template>
     <xsl:template match="/orderProducts/orderProduct">
         <tr>
-             <td>
+            <td>
                 <xsl:value-of select="orderID"/>
             </td>
             <td>

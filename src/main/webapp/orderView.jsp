@@ -38,33 +38,22 @@ customer can update the order name here too-->
             <ul>
                 <li><a class="active" href="#">Home</a></li>
                 <li><a href="myOrders.jsp">back</a></li>
-                <li><a href="/group1/LougoutServlet">Logout</a></li>
-
+                <li><a href="/group1/LogoutServlet">Logout</a></li>
+                <li><a href="shopPage.jsp">Shop</a></li>
             </ul>
         </nav>
 
         <% String xslPath = application.getRealPath("/xsl/orderProducts.xsl");
             OrderProductSqlDAO orderProductSqlDAO = (OrderProductSqlDAO) session.getAttribute("orderProductSqlDAO");
             int orderID = Integer.parseInt(request.getParameter("orderID"));
+            session.setAttribute("orderID", orderID);
             OrderProducts orderProducts = new OrderProducts();
             orderProducts.addAll(orderProductSqlDAO.getAllOrderProducts(orderID));
-            
             XmlTransformer transformer = new XmlTransformer();
             transformer.transform(xslPath, orderProducts, new StreamResult(out));
-           // session.setAttribute("orderID", orderID);
-
         %>
-         <!-- Remove a product for the order -->
-            <span><a href="/group1/OrderDeleteServlet">Delete Order</a></span>
-
-            <!-- Add a product to the order -->
-           
-            <span><a href="/group1/AddToOrderServlet">Add Product</a></span>
-            
-            <span><a href="/group1/DeleteOrderProductServlet">Remove Product</a></span>
-            <% 
-                
-            %>
+        <!-- Remove a product for the order -->
+        <span><a href="/group1/DeleteOrderServlet?orderID=<%= orderID%>">Delete this Order</a></span>
         <!-- Clock - Footer -->
         <div class="clock">
             <span class="clock-time"></span>
