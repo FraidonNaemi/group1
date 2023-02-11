@@ -149,6 +149,12 @@ public class ProductSqlDAO {
         System.out.println("Row " + row + " has been successflly updated");
     }
 
+    //Read Query - Read One by product id (for order update)
+    public void updateStock(int productID, int newStock) throws SQLException {
+        String query = "UPDATE store.products SET productStock=" + newStock + " WHERE productID = " + productID;
+        st.executeUpdate(query);
+    }
+
     //Delete Query - by ID
     public void delete(int productID) throws SQLException {
         deleteSt.setString(1, "" + productID);

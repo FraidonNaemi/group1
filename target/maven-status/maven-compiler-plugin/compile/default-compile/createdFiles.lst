@@ -22,6 +22,7 @@ com\controller\ProductSearchServlet.class
 com\controller\RegexRegisterProductServlet.class
 com\controller\DeleteProductServlet.class
 com\controller\RegisterServlet.class
+com\controller\DeleteOrderProductServlet.class
 com\model\OrderProduct.class
 com\utils\In.class
 com\controller\AdminRegisterServlet.class
@@ -32,10 +33,15 @@ com\model\Admin.class
 com\rest\OrderSqlService.class
 com\rest\client\ProductServiceClient.class
 com\app\ProductSqlApp.class
+com\controller\DeleteOrderServlet.class
 com\controller\AdminDeleteServlet.class
 com\model\dao\SqlDB.class
+com\controller\CreateOrderProductServlet.class
 com\model\dao\SqlDBConnector.class
 com\controller\CustomerAccountServlet.class
 com\controller\LogoutServlet.class
 com\model\dao\OrderSqlDAO.class
 com\model\dao\XmlTransformer.class
+com\controller\RegexRegisterServlet.class
+com\controller\CreateOrderServlet.class
+com\controller\UpdateOrderServlet.class

@@ -1,3 +1,6 @@
+<%@page import="com.model.dao.OrderSqlDAO"%>
+<%@page import="com.model.Customer"%>
+<%@page import="com.model.dao.OrderProductSqlDAO"%>
 <%@page import="com.model.Product"%>
 <%@page import="com.model.dao.ProductSqlDAO"%>
 <%@page import="java.util.*"%>
@@ -5,33 +8,29 @@
          pageEncoding="ISO-8859-1"%>
 
 <%
-    //User auth = (User) request.getSession().getAttribute("auth");
-    //if (auth != null) {
-    //  request.setAttribute("person", auth);
-    //}
     ProductSqlDAO productSqlDAO = (ProductSqlDAO) session.getAttribute("productSqlDAO");
     List<Product> products = productSqlDAO.getProducts();
-    // ArrayList<Cart> cart_list = (ArrayList<Cart>) session.getAttribute("cart-list");
-    // if (cart_list != null) {
-    //   request.setAttribute("cart_list", cart_list);
-    //}
+
+    Customer customer = (Customer) session.getAttribute("customer");
+    OrderSqlDAO orderSqlDAO = (OrderSqlDAO) session.getAttribute("orderSqlDAO");
+    int orderID = orderSqlDAO.lastOrderID(customer.getCustomerID());
+    session.setAttribute("orderID", orderID);
 %>
 <!DOCTYPE html>
 <html>
     <head>
         <%@include file="/includes/head.jsp"%>
-        <title>E-Commerce Cart</title>
+        <title>Shop Page</title>
     </head>
     <body>
         <%@include file="/includes/navbar.jsp"%>
-
-
         <div class="container">
             <div class="card-header my-3">All Products</div>
             <div class="row">
-                <%                    if (!products.isEmpty()) {
+                <%
+                    if (!products.isEmpty()) {
                         for (Product p : products) {
-                        if(p.getProductStock()>0){
+                            if (p.getProductStock() > 0) {
                 %>
                 <div class="col-md-3 my-3">
                     <div class="card w-100">
@@ -43,25 +42,21 @@
                             <h6 class="category">Category: <%=p.getProductCategory()%></h6>
                             <h6 class="category">description <%=p.getProductDescription()%></h6>
                             <h6 class="category">Stock <%=p.getProductStock()%></h6>
-
-
+                            <%int currentProductID = p.getProductID();%>
                             <div class="mt-3 d-flex justify-content-between">
-                                <a class="btn btn-dark" href="#">Add to Cart</a>
-                                <a class="btn btn-primary" href="#">Buy Now</a>
+                                <a class="btn btn-dark" href="/group1/CreateOrderProductServlet?currentProductID=<%= currentProductID%>">Add to Cart</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <%
-                        }}
+                <%}
+                        }
                     } else {
                         out.println("There is no proucts");
                     }
                 %>
-
             </div>
         </div>
-
         <%@include file="/includes/footer.jsp"%>
     </body>
 </html>

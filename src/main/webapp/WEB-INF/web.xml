@@ -81,6 +81,26 @@
         <servlet-name>CustomerDeleteServlet</servlet-name>
         <servlet-class>com.controller.CustomerDeleteServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdateOrderServlet</servlet-name>
+        <servlet-class>com.controller.UpdateOrderServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteOrderServlet</servlet-name>
+        <servlet-class>com.controller.DeleteOrderServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteOrderProductServlet</servlet-name>
+        <servlet-class>com.controller.DeleteOrderProductServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CreateOrderServlet</servlet-name>
+        <servlet-class>com.controller.CreateOrderServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CreateOrderProductServlet</servlet-name>
+        <servlet-class>com.controller.CreateOrderProductServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterProductServlet</servlet-name>
         <url-pattern>/RegisterProductServlet</url-pattern>
@@ -156,6 +176,26 @@
     <servlet-mapping>
         <servlet-name>CustomerDeleteServlet</servlet-name>
         <url-pattern>/CustomerDeleteServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateOrderServlet</servlet-name>
+        <url-pattern>/UpdateOrderServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteOrderServlet</servlet-name>
+        <url-pattern>/DeleteOrderServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteOrderProductServlet</servlet-name>
+        <url-pattern>/DeleteOrderProductServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateOrderServlet</servlet-name>
+        <url-pattern>/CreateOrderServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateOrderProductServlet</servlet-name>
+        <url-pattern>/CreateOrderProductServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

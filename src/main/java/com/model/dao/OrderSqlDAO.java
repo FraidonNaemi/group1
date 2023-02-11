@@ -14,7 +14,6 @@ import java.util.List;
 import com.model.Order;
 import com.model.Orders;
 import java.sql.PreparedStatement;
-import java.time.LocalDate;
 
 /**
  *
@@ -38,15 +37,13 @@ public class OrderSqlDAO {
         st.executeUpdate(columns + values);
     }
 
-
     public int lastOrderID(int customerID) throws SQLException {
-        String fetch = "select orderID from store.orders where customerID ="+customerID+" order by orderID desc limit 1";
+        String fetch = "select orderID from store.orders where customerID =" + customerID + " order by orderID desc limit 1";
         ResultSet rs = st.executeQuery(fetch);
 
         int orderID = 0;
         while (rs.next()) {
             orderID = Integer.parseInt(rs.getString(1));
-
         }
         return orderID;
     }
@@ -67,9 +64,25 @@ public class OrderSqlDAO {
         }
         return temp;
     }
-//
-    //Read All Orders for a Customer
 
+    //Read All Orders for a Customer(FOR WS)
+    public List<Order> getOrders() throws SQLException {
+        String fetch = "SELECT * FROM store.orders";
+        ResultSet rs = st.executeQuery(fetch);
+
+        List<Order> temp = new ArrayList<>();
+
+        while (rs.next()) {
+            int orderID = Integer.parseInt(rs.getString(1));
+            String orderDate = rs.getString(2);
+            int customerID = Integer.parseInt(rs.getString(3));
+
+            temp.add(new Order(orderID, orderDate, customerID));
+        }
+        return temp;
+    }
+
+    //Read an Order for a Customer
     public Order getOrderByID(int customerID) throws SQLException {
         String fetch = "SELECT * FROM store.orders where customerID = " + customerID;
         ResultSet rs = st.executeQuery(fetch);
@@ -83,28 +96,43 @@ public class OrderSqlDAO {
         }
         return order;
     }
-    
-//
-//    //delete All Orders for a Customer
-//    public void deleteAllOrders(int customerID) throws SQLException {
-//        String fetch = "delete orders from store.orders where customerID=" + customerID;
-//        ResultSet rs = st.executeQuery(fetch);
-//    }
-//
-    //delete one Order for a Customer by ID
 
-    public void deleteOrder( int orderID) throws SQLException {
-        
-        deleteSt.setInt(1, orderID);
+    //Read an Order for a Customer(for WS for now)
+    public Orders getAllOrdersByCustomerID(int customerID) throws SQLException {
+        String fetch = "SELECT * FROM store.orders where customerID = " + customerID;
+        ResultSet rs = st.executeQuery(fetch);
+        Order order = new Order();
+        Orders orders = new Orders();
+        while (rs.next()) {
+            customerID = Integer.parseInt(rs.getString(1));
+            int orderID = Integer.parseInt(rs.getString(2));
+            String orderDate = rs.getString(3);
+            orders.add(order = (new Order(orderID, orderDate, customerID)));
+        }
+        return orders;
+    }
+
+    //Read an Order for a Customer(FOR WS)
+    public Order getOrderByOrderID(int orderID) throws SQLException {
+        String fetch = "SELECT * FROM store.orders where orderID = " + orderID;
+        ResultSet rs = st.executeQuery(fetch);
+        Order order = new Order();
+
+        while (rs.next()) {
+            orderID = Integer.parseInt(rs.getString(1));
+            String orderDate = rs.getString(2);
+            int customerID = Integer.parseInt(rs.getString(3));
+            order = (new Order(orderID, orderDate, customerID));
+        }
+        return order;
+    }
+
+    //delete one Order for a Customer by ID
+    public void deleteOrder(int customerID, int orderID) throws SQLException {
+
+        deleteSt.setInt(customerID, orderID);
         int row = deleteSt.executeUpdate();
         System.out.println("Row " + row + " has been successflly deleted");
     }
 
-    //archive Order
-//    public void archive(int customerID) throws SQLException{
-//        List<Order> orders = getOrder(cusomerID);
-//        
-//        for(Order order:orders)
-//            create(customerID, order.getOrderDate(), "store.ordersArchive");
-//    }
 }

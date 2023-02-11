@@ -25,8 +25,10 @@
             </label>
             <ul>
                 <li><a class="active" href="#">Dashboard</a></li>
-                <li><a href="customerAccount.jsp">Account</a></li>
                 <li><a href="/group1/LogoutServlet">Logout</a></li>
+                <li><a href="account.jsp">Account</a></li>
+                <li><a href="myOrders.jsp">My Orders</a></li>
+                <li><a href="shopPage.jsp">Shop</a></li>                
             </ul>
         </nav>
         
