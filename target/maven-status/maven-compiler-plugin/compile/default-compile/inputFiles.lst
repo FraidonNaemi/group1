@@ -1,4 +1,6 @@
+C:\group1\src\main\java\com\controller\CustomerDeleteServlet.java
 C:\group1\src\main\java\com\model\Customer.java
+C:\group1\src\main\java\com\controller\CustomerAccountServlet.java
 C:\group1\src\main\java\com\controller\RegisterServlet.java
 C:\group1\src\main\java\com\controller\CustomerLoginServlet.java
 C:\group1\src\main\java\com\model\Admins.java
@@ -9,6 +11,7 @@ C:\group1\src\main\java\com\model\dao\AdminSqlDAO.java
 C:\group1\src\main\java\com\controller\DeleteProductServlet.java
 C:\group1\src\main\java\com\controller\AdminRegisterServlet.java
 C:\group1\src\main\java\com\rest\client\ProductServiceClient.java
+C:\group1\src\main\java\com\controller\AdminAccountServlet.java
 C:\group1\src\main\java\com\model\Customers.java
 C:\group1\src\main\java\com\rest\ProductSqlService.java
 C:\group1\src\main\java\com\controller\ProductSearchServlet.java
@@ -32,6 +35,7 @@ C:\group1\src\main\java\com\model\Orders.java
 C:\group1\src\main\java\com\model\Products.java
 C:\group1\src\main\java\com\controller\CustomerRegisterServlet.java
 C:\group1\src\main\java\com\controller\LoginServlet.java
+C:\group1\src\main\java\com\controller\AdminDeleteServlet.java
 C:\group1\src\main\java\com\controller\InitServlet.java
 C:\group1\src\main\java\com\rest\OrderSqlService.java
 C:\group1\src\main\java\com\model\dao\SqlDBConnector.java

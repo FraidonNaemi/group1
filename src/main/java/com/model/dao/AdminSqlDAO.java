@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.model.dao;
 
 import com.model.Admin;
@@ -16,13 +11,13 @@ import java.util.List;
 
 /**
  *
- * @author 236367
+ * @author group1
  */
 public class AdminSqlDAO {
 
     private Statement st;
     private PreparedStatement updateSt;
-    private String updateQuery = "UPDATE store.admins SET ADMINNAME=?,ADMINEMAIL=?,ADMINPASSWORD=?,ADMINDOB=?,ADMINPHONENUMBER=?,ADMINADDRESS=? WHERE ADMINID=?";
+    private String updateQuery = "UPDATE store.admins SET adminName=?,adminEmail=?,adminPassword=?,adminDOB=?,adminPhoneNumber=?,adminAddress=? WHERE adminID=?";
     private PreparedStatement deleteSt;
     private String deleteQuery = "DELETE FROM store.admins WHERE adminID=?";
 
@@ -33,29 +28,29 @@ public class AdminSqlDAO {
     }
 
     // Create Query
-    public void create(String name, String email, String password, String DOB, String phonenumber, String address) throws SQLException {
-        String columns = "INSERT INTO store.admin(adminName,adminEmail,adminPassword,adminDOB,adminPhoneNumber,adminAddress)";
-        String values = "VALUES('" + name + "', '" + email + "','" + password + "','" + DOB + "','" + phonenumber + "','" + address + "')";
+    public void create(String adminName, String adminEmail, String adminPassword, String adminDOB, String adminPhoneNumber, String adminAddress) throws SQLException {
+        String columns = "INSERT INTO store.admins(adminName,adminEmail,adminPassword,adminDOB,adminPhoneNumber,adminAddress)";
+        String values = "VALUES('" + adminName + "', '" + adminEmail + "','" + adminPassword + "','" + adminDOB + "','" + adminPhoneNumber + "','" + adminAddress + "')";
         System.out.println(values);
         st.executeUpdate(columns + values);
     }
 
-    public void update(String name, String email, String password, String DOB, String phonenumber, String address,
-             int ID) throws SQLException {
-        updateSt.setString(1, name);
-        updateSt.setString(2, email);
-        updateSt.setString(3, password);
-        updateSt.setString(4, DOB);
-        updateSt.setString(5, phonenumber);
-        updateSt.setString(6, address);
-        updateSt.setString(7, Integer.toString(ID));
+    public void update(String adminName, String adminEmail, String adminPassword, String adminDOB, String adminPhoneNumber, String adminAddress,
+             int adminID) throws SQLException {
+        updateSt.setString(1, adminName);
+        updateSt.setString(2, adminEmail);
+        updateSt.setString(3, adminPassword);
+        updateSt.setString(4, adminDOB);
+        updateSt.setString(5, adminPhoneNumber);
+        updateSt.setString(6, adminAddress);
+        updateSt.setString(7, Integer.toString(adminID));
         int row = updateSt.executeUpdate();
         System.out.println("Row " + row + " Admin has been successflly updated");
     }
 
     // Read Query - Read One
     public Admin getAdmin(int ID) throws SQLException {
-        String query = "SELECT * FROM store.admin WHERE adminID=" + ID;
+        String query = "SELECT * FROM store.admins WHERE adminID=" + ID;
         ResultSet rs = st.executeQuery(query);
         while (rs.next()) {
             int currentID = Integer.parseInt(rs.getString(1));
@@ -76,7 +71,7 @@ public class AdminSqlDAO {
 
     // Read Query - Read One
     public Admin getAdmin(String email) throws SQLException {
-        String query = "SELECT * FROM store.admin WHERE adminEmail='" + email + "'";
+        String query = "SELECT * FROM store.admins WHERE adminEmail='" + email + "'";
         ResultSet rs = st.executeQuery(query);
         while (rs.next()) {
             String currentEmail = rs.getString(3);
@@ -126,7 +121,7 @@ public class AdminSqlDAO {
     }
     //Read Admins Query - Read All
     public List<Admin> getAdmins() throws SQLException {
-        String query = "SELECT * FROM store.admin";
+        String query = "SELECT * FROM store.admins";
         ResultSet rs = st.executeQuery(query);
         List<Admin> temp = new ArrayList<>();
         while (rs.next()) {
