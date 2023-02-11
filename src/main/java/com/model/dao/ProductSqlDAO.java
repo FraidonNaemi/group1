@@ -42,6 +42,12 @@ public class ProductSqlDAO {
         st.executeUpdate(columns + values);
     }
 
+    //Read Query - Read One by product id (for order update)
+    public void updateStock(int productID, int newStock) throws SQLException {
+        String query = "UPDATE store.products SET productStock=" + newStock + " WHERE productID = " + productID;
+        st.executeUpdate(query);
+    }
+
     public void create(String productName) throws SQLException {
         String columns = "INSERT INTO store.products(productImage,productName,productPrice,productCategory,productDescription,productStock)";
         String values = "VALUES('image','" + productName + "','20.5','sport','football',5)";

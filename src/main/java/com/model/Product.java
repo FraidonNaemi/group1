@@ -19,34 +19,42 @@ public class Product implements Serializable {
     public Product() {
     }
 
-    public Product(String productImage, String productName, double productPrice, String productCtegory, String productDescription,int productStock) {
+    public Product(String productImage, String productName, double productPrice, String productCtegory, String productDescription, int productStock) {
         this.productImage = productImage;
         this.productName = productName;
         this.productPrice = productPrice;
         this.productCategory = productCategory;
         this.productDescription = productDescription;
-        this.productStock=productStock;
+        this.productStock = productStock;
 
     }
 
-    public Product(int productID, String productImage, String productName, double productPrice, String productCategory, String productDescription,int productStock) {
+    public Product(int productID, String productImage, String productName, double productPrice, String productCategory, String productDescription, int productStock) {
         this.productID = productID;
         this.productImage = productImage;
         this.productName = productName;
         this.productPrice = productPrice;
         this.productCategory = productCategory;
         this.productDescription = productDescription;
-        this.productStock=productStock;
+        this.productStock = productStock;
     }
 
-    public void update(int productID, String productImage, String productName, double productPrice, String productCategory, String productDescription,int productStock) {
+    public void update(int productID, String productImage, String productName, double productPrice, String productCategory, String productDescription, int productStock) {
         this.productID = productID;
         this.productImage = productImage;
         this.productName = productName;
         this.productPrice = productPrice;
         this.productCategory = productCategory;
         this.productDescription = productDescription;
-        this.productStock=productStock;
+        this.productStock = productStock;
+    }
+
+    public void decProductStock(int qunatity) {
+        this.productStock = this.productStock - qunatity;
+    }
+
+    public void incProductStock(int qunatity) {
+        this.productStock = this.productStock + qunatity;
     }
 
     public void setProductStock(int productStock) {
@@ -121,9 +129,5 @@ public class Product implements Serializable {
     public String toString() {
         return "Product{" + "productID=" + productID + ", productImage=" + productImage + ", productName=" + productName + ", productPrice=" + productPrice + ", productCategory=" + productCategory + ", productDescription=" + productDescription + ", productStock=" + productStock + '}';
     }
-
-    
-
-   
 
 }
