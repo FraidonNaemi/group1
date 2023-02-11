@@ -11,6 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Customer Dashboard</title>
+        <link rel="stylesheet" href="css/style.css"/>
     </head>
     <body>
         <!-- Navigation Bar -->
@@ -24,7 +25,7 @@
             </label>
             <ul>
                 <li><a class="active" href="#">Dashboard</a></li>
-                <li><a href="account.jsp">Account</a></li>
+                <li><a href="customerAccount.jsp">Account</a></li>
                 <li><a href="/group1/LogoutServlet">Logout</a></li>
             </ul>
         </nav>

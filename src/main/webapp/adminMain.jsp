@@ -5,6 +5,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Admin Dashboard</title>
+        <link rel="stylesheet" href="css/style.css"/>
     </head>
     <body>
         <nav>
@@ -18,6 +19,7 @@
             <ul>
                 <li><a class="active" href="#">Dashboard</a></li>
                 <li><a href="adminAccount.jsp">Account</a></li>
+                 <li><a href="adminProductView.jsp">Temp Product View</a></li>
                 <li><a href="/group1/LogoutServlet">Logout</a></li>
             </ul>
         </nav>

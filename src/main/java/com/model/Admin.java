@@ -1,131 +1,91 @@
 package com.model;
-
-import java.io.Serializable;
-import java.util.*;
-import javax.xml.bind.annotation.*;
-
-@XmlRootElement(name = "admin")
-@XmlAccessorType(XmlAccessType.FIELD)
-public class Admin implements Serializable {
-
-    private int ID;
+/**
+ *
+ * @author group1
+ */
+public class Admin {
+    private int adminID;
     private String adminName;
     private String adminEmail;
     private String adminPassword;
     private String adminDOB;
-    private String adminPhonenumber;
+    private String adminPhoneNumber;
     private String adminAddress;
-
-    public Admin() {
+    
+    public Admin(int adminID, String adminName, String adminEmail, String adminPassword, String adminDOB, String adminPhoneNumber, String adminAddress) {
+        this.adminID = adminID;
+        this.adminName = adminName;
+        this.adminEmail = adminEmail;
+        this.adminPassword = adminPassword;
+        this.adminDOB = adminDOB;
+        this.adminPhoneNumber = adminPhoneNumber;
+        this.adminAddress = adminAddress;
     }
-
-    public void update(int ID, String name, String email, String password, String DOB, String phonenumber, String address) {
-        this.ID = ID;
-        this.adminName = name;
-        this.adminEmail = email;
-        this.adminPassword = password;
-        this.adminDOB = DOB;
-        this.adminPhonenumber = phonenumber;
-        this.adminAddress = address;
-
+     public void update(int adminID, String adminName, String adminEmail, String adminPassword, String adminDOB, String adminPhoneNumber, String adminAddress) {
+        this.adminID = adminID;
+        this.adminName = adminName;
+        this.adminEmail = adminEmail;
+        this.adminPassword = adminPassword;
+        this.adminDOB = adminDOB;
+        this.adminPhoneNumber = adminPhoneNumber;
+        this.adminAddress = adminAddress;
     }
-
-    public Admin(String name, String email, String password, String DOB, String phonenumber, String address) {
-        this.adminName = name;
-        this.adminEmail = email;
-        this.adminPassword = password;
-        this.adminDOB = DOB;
-        this.adminPhonenumber = phonenumber;
-        this.adminAddress = address;
-
+    public boolean login(String adminEmail, String adminPassword) {
+        return this.adminEmail.equals(adminEmail) && this.adminPassword.equals(adminPassword);
     }
-
-    public Admin(int ID, String name, String email, String password, String DOB, String phonenumber, String address) {
-        this.ID = ID;
-        this.adminName = name;
-        this.adminEmail = email;
-        this.adminPassword = password;
-        this.adminDOB = DOB;
-        this.adminPhonenumber = phonenumber;
-        this.adminAddress = address;
-
+    public boolean match(int adminID) {
+        return this.adminID == adminID;
     }
-
-    public void setName(String adminName) {
+    public boolean match(String adminEmail) {
+        return this.adminEmail.equals(adminEmail);
+    }
+    public boolean match(Admin other) {
+        return this.adminID == other.adminID;
+    }
+    public int getAdminID() {
+        return adminID;
+    }
+    public void setAdminID(int adminID) {
+        this.adminID = adminID;
+    }
+    public String getAdminName() {
+        return adminName;
+    }
+    public void setAdminName(String adminName) {
         this.adminName = adminName;
     }
-
-    public String getName() {
-        return this.adminName;
-    }
-
-    public boolean login(String email, String password) {
-        return this.adminEmail.equals(email) && this.adminPassword.equals(password);
-    }
-
-    public boolean match(int ID) {
-        return this.ID == ID;
-    }
-
-    public boolean match(String email) {
-        return this.adminEmail.equals(email);
-    }
-
-    public boolean match(Admin other) {
-        return this.ID == other.ID;
-    }
-
-    public int getID() {
-        return ID;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
-    }
-
-    public String getEmail() {
+    public String getAdminEmail() {
         return adminEmail;
     }
-
-    public void setEmail(String email) {
-        this.adminEmail = email;
+    public void setAdminEmail(String adminEmail) {
+        this.adminEmail = adminEmail;
     }
-
-    public String getPassword() {
+    public String getAdminPassword() {
         return adminPassword;
     }
-
-    public void setPassword(String password) {
-        this.adminPassword = password;
+    public void setAdminPassword(String adminPassword) {
+        this.adminPassword = adminPassword;
     }
-
-    public String getDOB() {
+    public String getAdminDOB() {
         return adminDOB;
     }
-
-    public void setDOB(String DOB) {
-        this.adminDOB = DOB;
+    public void setDOB(String adminDOB) {
+        this.adminDOB = adminDOB;
     }
-
-    public String getPhonenumber() {
-        return adminPhonenumber;
+    public String getAdminPhoneNumber() {
+        return adminPhoneNumber;
     }
-
-    public void setPhonenumber(String phonenumber) {
-        this.adminPhonenumber = phonenumber;
+    public void setPhoneNumber(String adminPhoneNumber) {
+        this.adminPhoneNumber = adminPhoneNumber;
     }
-
-    public String getAddress() {
+    public String getAdminAddress() {
         return adminAddress;
     }
-
-    public void setAddress(String address) {
-        this.adminAddress = address;
+    public void setAdminAddress(String adminAddress) {
+        this.adminAddress = adminAddress;
     }
-
     @Override
     public String toString() {
-        return "Admin{" + "ID=" + ID + ", name=" + adminName + ", email=" + adminEmail + ", password=" + adminPassword + ", DOB=" + adminDOB + ", phonenumber=" + adminPhonenumber + ", address=" + adminAddress + '}';
+        return adminID + "\t" + adminName + "\t" + adminEmail + "\t" + adminDOB + "\t" + adminPhoneNumber + "\t" + adminAddress;
     }
-
 }

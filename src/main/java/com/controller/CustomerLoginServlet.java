@@ -42,11 +42,11 @@ public class CustomerLoginServlet extends HttpServlet {
         
         if (customer != null) {
             session.setAttribute("customer", customer);
-            // response.sendRedirect("main.jsp");
-            request.getRequestDispatcher("main.jsp").include(request, response);
+           
+            request.getRequestDispatcher("customerMain.jsp").include(request, response);
         } else {
             session.setAttribute("userError", "Customer does not exist");
-            // response.sendRedirect("login.jsp");
+            
             request.getRequestDispatcher("login.jsp").include(request, response);
         }
     }

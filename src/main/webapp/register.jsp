@@ -5,6 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Register</title>
         <link rel="stylesheet" href="css/register.css">
+        <link rel="stylesheet" href="css/style.css"/>
         <link rel="stylesheet" href="css/loginRadioButton.css"/>
     </head>
 

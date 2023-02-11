@@ -22,9 +22,9 @@ public class CustomerSqlDAO {
 
     private Statement st;
     private PreparedStatement updateSt;
-    private String updateQuery = "UPDATE store.customer SET CUSTOMERNAME=?,CUSTOMEREMAIL=?,CUSTOMERPASSWORD=?,CUSTOMERDOB=?,CUSTOMERPHONENUMBER=?,CUSTOMERADDRESS=? WHERE CUSTOMERID=?";
+    private String updateQuery = "UPDATE store.customers SET CUSTOMERNAME=?,CUSTOMEREMAIL=?,CUSTOMERPASSWORD=?,CUSTOMERDOB=?,CUSTOMERPHONENUMBER=?,CUSTOMERADDRESS=? WHERE CUSTOMERID=?";
     private PreparedStatement deleteSt;
-    private String deleteQuery = "DELETE FROM store.customer WHERE customerID=?";
+    private String deleteQuery = "DELETE FROM store.customers WHERE customerID=?";
 
     public CustomerSqlDAO(Connection connection) throws SQLException {
         this.st = connection.createStatement();
@@ -34,7 +34,7 @@ public class CustomerSqlDAO {
 
     // Create Query
     public void create(String name, String email, String password, String DOB, String phonenumber, String address) throws SQLException {
-        String columns = "INSERT INTO store.customer(customerName,customerEmail,customerPassword,customerDOB,customerPhoneNumber,customerAddress)";
+        String columns = "INSERT INTO store.customers(customerName,customerEmail,customerPassword,customerDOB,customerPhoneNumber,customerAddress)";
         String values = "VALUES('" + name + "', '" + email + "','" + password + "','" + DOB + "','" + phonenumber + "','" + address + "')";
         System.out.println(values);
         st.executeUpdate(columns + values);
@@ -57,7 +57,7 @@ public class CustomerSqlDAO {
 
     // Read Query - Read One
     public Customer getCustomer(int ID) throws SQLException {
-        String query = "SELECT * FROM store.customer WHERE customerID=" + ID;
+        String query = "SELECT * FROM store.customers WHERE customerID=" + ID;
         ResultSet rs = st.executeQuery(query);
         while (rs.next()) {
             int currentID = Integer.parseInt(rs.getString(1));
@@ -78,7 +78,7 @@ public class CustomerSqlDAO {
 
     // Read Query - Read One
     public Customer getCustomer(String email) throws SQLException {
-        String query = "SELECT * FROM store.customer WHERE customerEmail='" + email + "'";
+        String query = "SELECT * FROM store.customers WHERE customerEmail='" + email + "'";
         ResultSet rs = st.executeQuery(query);
         while (rs.next()) {
             String currentEmail = rs.getString(3);
@@ -98,7 +98,7 @@ public class CustomerSqlDAO {
 
     // Read Query - Read One by Email and Password
     public Customer login(String email, String password) throws SQLException {
-        String query = "SELECT * FROM store.customer WHERE customerEmail='" + email + "' AND customerPassword='" + password + "'";
+        String query = "SELECT * FROM store.customers WHERE customerEmail='" + email + "' AND customerPassword='" + password + "'";
         ResultSet rs = st.executeQuery(query);
         while (rs.next()) {
             String currentEmail = rs.getString(3);
@@ -128,7 +128,7 @@ public class CustomerSqlDAO {
     }
     //Read Customers Query - Read All
     public List<Customer> getCustomers() throws SQLException {
-        String query = "SELECT * FROM store.customer";
+        String query = "SELECT * FROM store.customers";
         ResultSet rs = st.executeQuery(query);
         List<Customer> temp = new ArrayList<>();
         

@@ -24,7 +24,7 @@
             </label>
             <ul>
                 <li><a class="active" href="#">Home</a></li>
-                <li><a href="registerProduct.jsp">Register</a></li>
+                <li><a href="register.jsp">Register</a></li>
                 <li><a href="login.jsp">Login</a></li>
                 <li><a href="shopPage.jsp">shop</a></li>
 
