@@ -50,7 +50,7 @@ public class CustomerManagementSqlService {
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public Response addCustomer() throws JAXBException, FileNotFoundException, ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException, IOException {
         CustomerSqlDAO customerSqlDAO = new CustomerSqlDAO(new SqlDBConnector().connection());
-        customerSqlDAO.create("Test Test", "test.test@store.com", "Helloexample123", "2001-01-01", "0479181221", "11 George Ave, Sydney 2141");
+        customerSqlDAO.create("Test Test", "test.test@store.com", "Hellotest123", "2001-01-01", "0479181221", "11 George Ave, Sydney 2141");
         Customer customer = customerSqlDAO.getCustomer("test.test@store.com");
         Customers customers = new Customers();
         customers.add(customer);
@@ -58,7 +58,7 @@ public class CustomerManagementSqlService {
         return Response.status(200).entity(customer).build();
     }
     
-    // add a new customer by email
+    // Add a new customer by email
     @GET
     @Path("addcustomer/{customerEmail}") // http://localhost:8080/group1/rest/customermanagementapi/addcustomer/test.test@store.com
     @Produces(MediaType.APPLICATION_XML)

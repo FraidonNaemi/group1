@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
  * @author group1
  */
 public class DeleteCustomerServlet extends HttpServlet {
-
+    // Get the customer email and delete it from database by email
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -27,8 +27,8 @@ public class DeleteCustomerServlet extends HttpServlet {
             String customerEmail = request.getParameter("customerEmail");
             
             Customer customer = (Customer) session.getAttribute("customer");
-            
-            customerSqlDAO.delete(customer.getCustomerEmail());
+            customerSqlDAO.delete(customerEmail);
+            // customerSqlDAO.delete(customer.getCustomerEmail());
             request.getRequestDispatcher("viewCustomers.jsp").include(request, response);
         } catch (SQLException ex) {
             Logger.getLogger(DeleteCustomerServlet.class.getName()).log(Level.SEVERE, null, ex);

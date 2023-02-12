@@ -1,9 +1,3 @@
-<%-- 
-    Document   : main
-    Created on : Jan 29, 2023, 2:05:27 PM
-    Author     : group1
---%>
-
 <%@page import="javax.xml.transform.stream.StreamResult"%>
 <%@page import="com.model.dao.XmlTransformer"%>
 <%@page import="com.model.Customers"%>
@@ -16,7 +10,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>View Customer</title>
         <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/searchBox.css">
+        <link rel="stylesheet" href="css/viewCustomers.css">
     </head>
     <body>
         <!-- Navigation Bar -->
@@ -34,15 +28,22 @@
                 <li><a href="/group1/LogoutServlet">Logout</a></li>
             </ul>
         </nav>
-
+        
+        <% String customerError = (String) session.getAttribute("customerError");%>
+        
         <!-- Search customer by ID -->
-        <form method="POST" action="viewCustomers.jsp">
-            <div class="search-box">
-                <i class="uil uil-search"></i>
-                <input type="text" name="customerID" placeholder="Search by ID..." />
-                <button class="button">Search</button>
-            </div>
-        </form>
+        <div class="searchBox"> 
+            <form method="POST" action="/group1/CustomerSearchServlet">
+                <div class="search-box">
+                    <i class="uil uil-search"></i>
+                    <input type="text" name="customerID" placeholder="Search by ID..." />
+                    <button class="button">Search</button>
+                    <%if(customerError != null) {%>
+                        <h4 style="color: red; margin-left: 200px;"><%= customerError%></h4>    
+                    <%}%>
+                </div>
+            </form>
+        </div>
         
         <!-- Show the customers list -->
         <%
