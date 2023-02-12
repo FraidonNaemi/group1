@@ -23,8 +23,8 @@
                 <i class="fas fa-bars"></i>
             </label>
             <ul>
-                <li><a href="adminCustomerView.jsp">Customer Management</a></li>
-                <li><a class="active" href="#">Add Customers</a></li>
+                <li><a href="index.jsp">Home</a></li>
+                <li><a class="active" href="#">Add Customer</a></li>
                 <li><a href="/group1/LogoutServlet">Logout</a></li>
             </ul>
         </nav>
@@ -47,7 +47,7 @@
             </div>
             <form class="addForm" method="POST" action="/group1/AddCustomerRegexServlet">
                 <div class="form first">
-                    <div class="personal-details">
+                    <div class="details personal">
                         <div class="fields">
                             <div class="input-field">
                                 <label for="customerName">Full Name <span class="addCustomerError">&emsp;<%= (customerNameError != null) ? customerNameError : ""%></span></label>
@@ -70,7 +70,7 @@
                             </div>
                                 
                             <div class="input-field">
-                                <label for="customerPhoneNumber">Phone Number &nbsp;<span class="addCustomerError">&emsp;<%= (customerPhoneNumberError != null) ? customerPhoneNumberError : ""%></span></label>
+                                <label for="customerPhoneNumber">Phone Number &emsp;<span class="addCustomerError">&emsp;<%= (customerPhoneNumberError != null) ? customerPhoneNumberError : ""%></span></label>
                                 <input type="text" name="customerPhoneNumber" placeholder="Phone Number">
                             </div>
                                 

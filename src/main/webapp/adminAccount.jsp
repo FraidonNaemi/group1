@@ -5,9 +5,9 @@
 <html lang="en" dir="ltr">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
-        <title>Account Management</title>
+        <title>Account</title>
         <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/customerAccount.css">
+        <link rel="stylesheet" href="css/account.css">
         
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     </head>
@@ -30,7 +30,7 @@
                     <!-- Work in this part -->
                     <a href="adminMain.jsp">Dashboard</a>
                 </li>
-                <li><a class="active" href="#">Account Management</a></li>
+                <li><a class="active" href="#">Admin Account</a></li>
                 <li><a href="/group1/LogoutServlet">Logout</a></li>
             </ul>
         </nav>
@@ -52,7 +52,7 @@
         <header>Update Account</header>
         <form class="updateForm" method="POST" action="/group1/AdminAccountServlet">
             <div class="form first">
-                <div class="personal-details">
+                <div class="details personal">
                     <span class="title">ID: <%=admin.getAdminID()%></span>
 
                     <div class="fields">

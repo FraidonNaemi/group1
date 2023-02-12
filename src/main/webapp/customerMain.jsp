@@ -1,3 +1,9 @@
+<%-- 
+    Document   : customerMain
+    Created on : 11-Feb-2023, 2:51:39 PM
+    Author     : 236367
+--%>
+
 <%@page import="com.model.Customer"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -6,7 +12,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Customer Dashboard</title>
         <link rel="stylesheet" href="css/style.css"/>
-        <link rel="stylesheet" href="css/customerMain.css">
     </head>
     <body>
         <!-- Navigation Bar -->
@@ -20,10 +25,10 @@
             </label>
             <ul>
                 <li><a class="active" href="#">Dashboard</a></li>
-                <li><a href="customerAccount.jsp">Account Management</a></li>
-                <li><a href="myOrders.jsp">My Orders</a></li>
-                <li><a href="shopPage.jsp">Shop</a></li>    
                 <li><a href="/group1/LogoutServlet">Logout</a></li>
+                <li><a href="account.jsp">Account</a></li>
+                <li><a href="myOrders.jsp">My Orders</a></li>
+                <li><a href="shopPage.jsp">Shop</a></li>                
             </ul>
         </nav>
         

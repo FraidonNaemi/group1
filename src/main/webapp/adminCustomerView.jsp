@@ -5,7 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Customer Management</title>
         <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/adminCustomerView.css">
+        <link rel="stylesheet" href="adminCustomerView/style.css">
     </head>
     <body>
         <!-- Navigation Bar -->
@@ -18,8 +18,7 @@
                 <i class="fas fa-bars"></i>
             </label>
             <ul>
-                <li><a href="adminMain.jsp">Dashboard</a></li>
-                <li><a class="active" href="#">Customer Management</a></li>
+                <li><a class="active" href="#">Dashboard</a></li>
                 <li><a href="/group1/LogoutServlet">Logout</a></li>
             </ul>
         </nav>
@@ -27,7 +26,7 @@
         <!-- Link Buttons to perform CRUD operations on customer/s -->
         <div class="container">
                 <a href="addCustomer.jsp"><button class="btn btn1">Add Customer</button></a>
-            <a href="viewCustomers.jsp"><button class="btn btn2">View Customers</button></a>
+            <a href="viewCustomers.jsp"><button class="btn btn2">View Customer</button></a>
         </div>
 
         <!-- Footer -->

@@ -6,7 +6,6 @@ C:\group1\src\main\java\com\model\dao\OrderSqlDAO.java
 C:\group1\src\main\java\com\app\ProductSqlApp.java
 C:\group1\src\main\java\com\model\dao\ProductSqlDAO.java
 C:\group1\src\main\java\com\controller\UpdateOrderServlet.java
-C:\group1\src\main\java\com\rest\AdminSqlService.java
 C:\group1\src\main\java\com\model\Orders.java
 C:\group1\src\main\java\com\controller\DeleteCustomerServlet.java
 C:\group1\src\main\java\com\model\Products.java
@@ -49,6 +48,5 @@ C:\group1\src\main\java\com\rest\CustomerSqlService.java
 C:\group1\src\main\java\com\controller\LogoutServlet.java
 C:\group1\src\main\java\com\model\Admin.java
 C:\group1\src\main\java\com\controller\CustomerRegisterServlet.java
-C:\group1\src\main\java\com\rest\CustomerManagementSqlService.java
 C:\group1\src\main\java\com\rest\OrderSqlService.java
 C:\group1\src\main\java\com\controller\AddCustomerRegexServlet.java

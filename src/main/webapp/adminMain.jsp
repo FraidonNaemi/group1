@@ -6,7 +6,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Admin Dashboard</title>
         <link rel="stylesheet" href="css/style.css"/>
-        <link rel="stylesheet" href="css/adminMain.css">
     </head>
     <body>
         <nav>
@@ -19,9 +18,9 @@
             </label>
             <ul>
                 <li><a class="active" href="#">Dashboard</a></li>
-                <li><a href="adminAccount.jsp">Account Management</a></li>
+                <li><a href="adminAccount.jsp">Account</a></li>
+                <li><a href="adminProductView.jsp">Product Management</a></li>
                 <li><a href="adminCustomerView.jsp">Customer Management</a></li>
-                <li><a href="productManagement.jsp">Product Management</a></li>
                 <li><a href="/group1/LogoutServlet">Logout</a></li>
             </ul>
         </nav>
@@ -33,6 +32,7 @@
 
         <!-- Table Data -->
         <table class="content-table">
+
             <thead>
                 <tr>
                     <th colspan="2"><h3>Admin Information</h3></th>

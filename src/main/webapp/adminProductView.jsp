@@ -12,47 +12,46 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
         <title>Home</title>
         <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/adminProductView.css">
-        <link rel="stylesheet" href="css/productSearchBox.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     </head>
     <body>
         <!-- Navigation Bar -->
         <nav>
             <div class="logo">
-                AFSY
+                Ab | Fr
             </div>
             <input type="checkbox" id="click">
             <label for="click" class="menu-btn">
                 <i class="fas fa-bars"></i>
             </label>
             <ul>
-                <li><a href="adminMain.jsp">Dashboard</a></li>
-                <li><a href="productManagement.jsp">Product Management</a></li>
-                <li><a class="active" href="#">View Products</a></li>
+                <li><a href="index.jsp">Home</a></li>
+                <li><a class="active" href="#">Admin</a></li>
+                <li><a href="registerProduct.jsp">Add Product</a></li>
                 <li><a href="/group1/LogoutServlet">Logout</a></li>
             </ul>
         </nav>
-
-        <% String productError = (String) session.getAttribute("productError");%>
-
-        <!-- Search product by ID -->
-        <form method="POST" action="/group1/ProductSearchServlet">
-            <div class="search-box">
-                <i class="uil uil-search"></i>
-                <input id="productID" type="number" name="productID" placeholder="Search by ID..." />
-                <button class="button ">Search</button>
-                <%if (productError != null) {%>
-                    <h4 style="color: red; margin-left: 200px;"><%= productError%></h4>
-                <%}%>
-            </div>
-        </form>
-
+       <% String productError = (String) session.getAttribute("productError");%>
+        <div class="string">
+            <header>Search by ID</header>
+            <form class="strings" method="post" action="/group1/ProductSearchServlet">
+                <div class="input-area-string">
+                    <input id="productID" class="input-area-string" name="productID" type="number" placeholder="product ID">
+                    <%if(productError != null){%>
+                    <h4><%= productError %><h4/>
+                        <%}%>
+                </div> 
+        
         <%
             Admin admin = (Admin) session.getAttribute("admin");
         %>
-
+        
         <% if (admin != null) { %>
+        
+        <%
+           // request.setAttribute("email", null);
+            //request.removeAttribute("email");
+        %>
 
         <% String xslPath = application.getRealPath("/xsl/products.xsl");%>
 
@@ -66,21 +65,18 @@
             XmlTransformer transformer = new XmlTransformer();
             transformer.transform(xslPath, products, new StreamResult(out));
         %>
-
-        <% } else { %>
-        <% response.sendRedirect("login.jsp");%>
-        <% }%>
-        <%= productError = ""%>
         
+        <% } else { %>
+        
+        <% response.sendRedirect("adminLogin.jsp");%>
+        
+        <% } %>
+       <%= productError="" %>
         <!-- Clock - Footer -->
         <div class="clock">
             <span class="clock-time"></span>
             <span class="clock-ampm"></span>
         </div>
-        
-        <!-- Footer -->
-        <div class="footer">
-            AFSY © 2023
-        </div>
+        <script src="js/clock.js"></script>
     </body>
 </html>

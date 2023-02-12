@@ -1,27 +1,27 @@
+/* 
+    Created on : Feb 8, 2023, 8:04:45 PM
+    Author     : group1
+*/
+
 .container{
     position: relative;
     max-width: 900px;
     width: 100%;
     height: 450px;
     border-radius: 6px;
+    padding: 30px;
     background-color: #fff;
     box-shadow: 0 5px 10px rgba(0,0,0,0.1);
     text-align: left!important; 
     margin: 10% 25%;
 }
-
-.personal-details {
-    padding: 30px;
-}
 .container header{
     position: relative;
     text-align: center;
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 600;
-    background-color: #1b1b1b;
-    border-radius: 6px 6px 0 0;
-    color: #fff;
-    padding: 20px;
+    color: #333;
+    margin-bottom: 25px;
 }
 
 .container form{
@@ -29,7 +29,6 @@
     margin-top: 16px;
     height: 350px;
     background-color: #fff;
-    border-radius: 0 0 6px 6px; 
     overflow: hidden;
 }
 .container form .form{
@@ -73,7 +72,7 @@ form .fields .input-field{
     margin: 4px 0;
 }
 .input-field label{
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 500;
     color: #2e2e2e;
 }
@@ -103,8 +102,8 @@ form .fields .input-field{
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 50px;
-    max-width: 250px;
+    height: 45px;
+    max-width: 200px;
     width: 100%;
     border: none;
     outline: none;
@@ -116,7 +115,7 @@ form .fields .input-field{
     cursor: pointer;
 }
 .container form .btnText{
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 400;
 }
 form button:hover{
@@ -166,8 +165,4 @@ form .buttons button , .backBtn{
 
 .addCustomerError {
     color: red;
-}
-
-.addBtn {
-    font-size: 18px;
 }

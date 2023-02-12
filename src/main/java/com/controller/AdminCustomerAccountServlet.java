@@ -82,7 +82,7 @@ public class AdminCustomerAccountServlet extends HttpServlet {
                     // customerSqlDAO.update(customerName, customerEmail, customerPassword, customerDOB, customerPhoneNumber, customerAddress, customerID);
                     customerSqlDAO.update(customerName, customerPassword, customerDOB, customerPhoneNumber, customerAddress, customerID);
                     session.setAttribute("customer", customer);
-                    request.getRequestDispatcher("adminCustomerView.jsp").include(request, response);
+                    request.getRequestDispatcher("adminCustomerAccount.jsp").include(request, response);
                 }
                 
             } catch (SQLException ex) {

@@ -25,6 +25,7 @@ public class OrderSqlDAO {
     private PreparedStatement deleteSt;
     private String deleteQuery = "delete from store.orders where orderID = ?";
 
+    //conection
     public OrderSqlDAO(Connection connection) throws SQLException {
         this.st = connection.createStatement();
         this.deleteSt = connection.prepareStatement(deleteQuery);
@@ -37,6 +38,7 @@ public class OrderSqlDAO {
         st.executeUpdate(columns + values);
     }
 
+    //get the last order for a customer by customerID
     public int lastOrderID(int customerID) throws SQLException {
         String fetch = "select orderID from store.orders where customerID =" + customerID + " order by orderID desc limit 1";
         ResultSet rs = st.executeQuery(fetch);
@@ -82,32 +84,17 @@ public class OrderSqlDAO {
         return temp;
     }
 
-    //Read an Order for a Customer
-    public Order getOrderByID(int customerID) throws SQLException {
-        String fetch = "SELECT * FROM store.orders where customerID = " + customerID;
-        ResultSet rs = st.executeQuery(fetch);
-        Order order = new Order();
-
-        while (rs.next()) {
-            customerID = Integer.parseInt(rs.getString(1));
-            int orderID = Integer.parseInt(rs.getString(2));
-            String orderDate = rs.getString(3);
-            order = (new Order(orderID, orderDate, customerID));
-        }
-        return order;
-    }
-    
-        //Read an Order for a Customer(for WS for now)
+    //Read an Order for a Customer(for WS for now)
     public Orders getAllOrdersByCustomerID(int customerID) throws SQLException {
         String fetch = "SELECT * FROM store.orders where customerID = " + customerID;
         ResultSet rs = st.executeQuery(fetch);
-        Order order = new Order();
+
         Orders orders = new Orders();
         while (rs.next()) {
             customerID = Integer.parseInt(rs.getString(1));
             int orderID = Integer.parseInt(rs.getString(2));
             String orderDate = rs.getString(3);
-            orders.add(order = (new Order(orderID, orderDate, customerID)));
+            orders.add(new Order(orderID, orderDate, customerID));
         }
         return orders;
     }
@@ -129,7 +116,6 @@ public class OrderSqlDAO {
 
     //delete one Order for a Customer by ID
     public void deleteOrder(int customerID, int orderID) throws SQLException {
-
         deleteSt.setInt(customerID, orderID);
         int row = deleteSt.executeUpdate();
         System.out.println("Row " + row + " has been successflly deleted");

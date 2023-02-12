@@ -7,9 +7,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Product Dashboard</title>
         <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/productDashboard.css">
+        <link rel="stylesheet" href="css/addProduct.css">
     </head>
     <body>
+
+
         <!-- Navigation Bar -->
         <nav>
             <div class="logo">
@@ -20,13 +22,13 @@
                 <i class="fas fa-bars"></i>
             </label>
             <ul>
-                <li><a href="adminProductView.jsp">View Products</a></li>
+                <li><a href="index.jsp">Home</a></li>
                 <li><a class="active" href="#">Product Dashboard</a></li>
-                <li><a href="/group1/LogoutServlet">Logout</a></li>
             </ul>
         </nav>
 
         <%
+
             String productPriceError = (String) session.getAttribute("productPriceError");
             String productDescriptionError = (String) session.getAttribute("productDescriptionError");
             String productStockError = (String) session.getAttribute("productStockError");
@@ -47,67 +49,85 @@
 
         <div class="container">
             <header>Update Product</header>
-            <div class="confirm-field" style="text-align: center;">
-                <p style="color: green;"><%= (submitted != null) ? "Updated successfully" : ""%></p>
+            <div class="confirm-field">
+                <p><%= (submitted != null) ? "Updated successfully" : ""%></p>
             </div>
+
+
+
             <form method="POST" action="/group1/RegexUpdateProductServlet">
                 <div class="form first">
-                    <div class="product-details">
-                        <span class="title">ID: <%=product.getProductID()%></span>
-                        
+                    <div class="details personal">
                         <div class="fields">
+
                             <div class="input-field">
-                                <label for="productImage">Image URL<span class="updateProductError"></span></label>
+                                <label for="productID">product ID <span class="addCustomerError"></span></label>
+                                <input type="text" name="productID" value="<%= product.getProductID()%>" readonly="true">
+                            </div>
+
+                            <div class="input-field">
+                                <label for="productImage">product Image <span class="addCustomerError"></span></label>
                                 <input type="text" name="productImage" value="<%= product.getProductImage()%>">
                             </div>
 
                             <div class="input-field">
-                                <label for="productName">Name</label>
+                                <label for="productName">product Name &emsp;<span class="addCustomerError"></span></label>
                                 <input type="text" name="productName" value="<%= product.getProductName()%>" readonly="true">
                             </div>
 
                             <div class="input-field">
-                                <label for="productPrice">Price&emsp;<span class="updateProductError">&emsp;<%= (productPriceError != null) ? productPriceError : ""%></span></label>
+                                <label for="productPrice">product Price&emsp;<span class="addCustomerError">&emsp;<%= (productPriceError != null) ? productPriceError : ""%></span></label>
                                 <input type="text" name="productPrice" value="<%= product.getProductPrice()%>" >
                             </div>
-
-                            <div class="input-field">
+                            <!--                    <div class="field productCategory">
+                                                    <div class="input-area">
+                                                        <input type="text" name="productCategory" value="">
+                                                        <i class="icon fas fa-lock"></i>
+                                                        <i class="error error-icon fas fa-exclamation-circle"></i>
+                                                    </div>
+                                                </div>-->
+                            <div class="field productCategory">
                                 <div class="input-area">
-                                    <label for="productCategory">Category</label>
-                                    <select name="productCategory" id="productCategory" class="select-option">
-                                        <option value="sport" class="select-option">Sport</option>
-                                        <option value="tech" class="select-option">Tech</option>
-                                        <option value="healthAndBeauty" class="select-option">Health & Beauty</option>
-                                        <option value="chocolate" class="select-option">Chocolate</option>
+                                    <label for="productCategory">product Category</label>
+                                    <select name="productCategory" id="productCategory">
+                                        <option value="Book">Book</option>
+                                        <option value="Sport">Sport</option>
                                     </select>
+
                                 </div>
                             </div>
 
+
+
+
                             <div class="input-field">
-                                <label for="productStock">Stock &emsp;<span class="addCustomerError">&emsp;<%= (productStockError != null) ? productStockError : ""%></span></label>
+                                <label for="productDescription">product Description &emsp;<span class="addCustomerError">&emsp;<%= (productDescriptionError != null) ? productDescriptionError : ""%></span></label>
+                                <input type="text" name="productDescription" value="<%= product.getProductDescription()%>">
+                            </div>  
+
+
+
+
+
+                            <div class="input-field">
+                                <label for="productStock">product Stock &emsp;<span class="addCustomerError">&emsp;<%= (productStockError != null) ? productStockError : ""%></span></label>
                                 <input type="text" name="productStock" value="<%= product.getProductStock()%>" >
                             </div>
-                            
-                            <div class="input-field">
-                                <label for="productDescription">Description &emsp;<span class="addCustomerError">&emsp;<%= (productDescriptionError != null) ? productDescriptionError : ""%></span></label>
-                                <input type="text" name="productDescription" value="<%= product.getProductDescription()%>">
-                            </div> 
-                            
-                            <input type="hidden" name="submitted" value="submitted">
-                            <input type="hidden" name="productID" value="<%=product.getProductID()%>">
-                            
-                            <div class="buttons">
-                                <button class="deleteBtn">
-                                    <span class="btnText"><a href="/group1/DeleteProductServlet" style="text-decoration: none; color:#fff;">Delete</a></span>
-                                </button>
 
-                                <button class="updateBtn" type="submit">
-                                    <span class="btnText">Update</span>
-                                </button>
+
+                            <input type="hidden" name="submitted" value="submitted">
+                            <div class="account-div">
+                                <table class="account-table">
+                                    <tr>
+                                        <td class="acc-td"><span class="account-delete-button" style="background: #FF2305; color: white; padding-top: 14px; padding-bottom: 14px; padding-left: 20px; padding-right: 20px; border-radius: 5px; font-size: 18px;"><a href="/group1/DeleteProductServlet" class="account-delete-link" style="color: white;">Delete</a></span></td>
+                                        <td class="acc-td"><input type="submit" class="update-input-account" value="Update" style="width: 100px;"></td>
+                                    </tr>
+                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </form>
         </div>
         <%
@@ -120,9 +140,11 @@
             session.setAttribute("productDescriptionError", productDescriptionError);
             session.setAttribute("productStockError", productStockError);
         %>
-        <!-- Footer -->
-        <div class="footer">
-            AFSY © 2023
+        <!-- Clock - Footer -->
+        <div class="clock">
+            <span class="clock-time"></span>
+            <span class="clock-ampm"></span>
         </div>
+        <script src="js/clock.js"></script>
     </body>
 </html>

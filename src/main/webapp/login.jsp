@@ -26,6 +26,7 @@
             <ul>
                 <li><a href="index.jsp">Home</a></li>
                 <li><a class="active" href="">Login</a></li>
+                <li><a href="#">Logout</a></li>
             </ul>
         </nav>
 
@@ -75,7 +76,7 @@
                 </div>
 
             </form>
-            <div class="sign-txt">Don’t have an account? <a href="register.jsp">Sign Up</a></div>
+            <div class="sign-txt">Don’t have an account? <a href="#">Sign Up</a></div>
         </div>
         <%
             userError = "";
