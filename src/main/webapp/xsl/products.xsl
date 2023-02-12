@@ -6,7 +6,7 @@
             <head>
                 <title>Admin View</title>
                 <link rel="stylesheet" type="text/css" href="css/style.css" />
-                <link rel="stylesheet" type="text/css" href="css/users.css" />
+                <link rel="stylesheet" type="text/css" href="css/products.css" />
             </head>
             <body>
                 <xsl:apply-templates/>
@@ -16,18 +16,17 @@
     <xsl:template match="products">
         <table class="content-table" style="margin-top:100px!important;">
             <thead>
-                <tr>
-                    <th colspan="7">
+                <tr class="productList">
+                    <th colspan="6">
                         <h3>product List</h3>
                     </th>
-                    <tr>
+                    <tr class="productHeaderItems">
                         <td class="td-title">ID</td>
-                        <td class="td-title">Image</td>
                         <td class="td-title">Name</td>
-                        <td class="td-title">price</td>
-                        <td class="td-title">category</td>
-                        <td class="td-title">description</td>
-                        <td class="td-title">stock</td>
+                        <td class="td-title">Price</td>
+                        <td class="td-title">Category</td>
+                        <td class="td-title">Description</td>
+                        <td class="td-title">Stock</td>
 
                     </tr>
                 </tr>
@@ -45,12 +44,7 @@
                 <a href="http://localhost:8080/group1/productDashboard.jsp?productID={$productIDurl}" style="text-decoration: none; color black;">
                     <xsl:value-of select="productID"/>
                 </a>
-
             </td>
-            <td>
-                <xsl:value-of select="productImage"/>
-            </td>
-           
             <td>
                 <xsl:value-of select="productName"/>
             </td>
@@ -59,9 +53,6 @@
             </td>
             <td>
                 <xsl:value-of select="productCategory"/>
-            </td>
-            <td>
-                <xsl:value-of select="productManufacturer"/>
             </td>
             <td>
                 <xsl:value-of select="productDescription"/>

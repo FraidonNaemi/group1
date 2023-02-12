@@ -5,7 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Add Product</title>
         <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/addProduct.css">
+        <link rel="stylesheet" href="css/registerProduct.css">
     </head>
 
     <body>
@@ -19,15 +19,14 @@
                 <i class="fas fa-bars"></i>
             </label>
             <ul>
-                <li><a href="index.jsp">Home</a></li>
+                <li><a href="adminProductView.jsp">View Products</a></li>
                 <li><a class="active" href="#">Register Product</a></li>
+                <li><a href="/group1/LogoutServlet">Logout</a></li>
             </ul>
         </nav>
 
-
         <!-- Downloading the errors -->
         <%
-
             String productNameError = (String) session.getAttribute("productNameError");
             String productPriceError = (String) session.getAttribute("productPriceError");
             String productDescriptionError = (String) session.getAttribute("productDescriptionError");
@@ -35,69 +34,56 @@
             String productError = (String) session.getAttribute("productError");
         %>
 
-
-
-
         <!-- Sign up - Form -->
         <div class="container">
             <header>Register Product</header>
-            <div class="error-field-register"> 
-                <p><%= (productError != null) ? productError : ""%></p>
+            <div class="error-field-register" style="text-align: center;"> 
+                <p style="color: red;"><%= (productError != null) ? productError : ""%></p>
             </div>
             <form class="addForm" method="POST" action="/group1/RegexRegisterProductServlet">
                 <div class="form first">
-                    <div class="details personal">
+                    <div class="product-details">
                         <div class="fields">
-
-
-
                             <div class="input-field">
-                                <label for="productImage">product Image <span class="addCustomerError"></span></label>
-                                <input type="text" required name="productImage" placeholder="product Link">
+                                <label for="productImage">Image URL<span class="addProductError"></span></label>
+                                <input type="text" required name="productImage" placeholder="product URL">
                             </div>
-
-
+                            
                             <div class="input-field">
-                                <label for="productName">product Name &emsp;<span class="addCustomerError">&emsp;<%= (productNameError != null) ? productNameError : ""%></span></label>
+                                <label for="productName">Name &emsp;<span class="addProductError">&emsp;<%= (productNameError != null) ? productNameError : ""%></span></label>
                                 <input type="text" required name="productName" placeholder="Product Name">
                             </div>
 
-
                             <div class="input-field">
-                                <label for="productPrice">product Price&emsp;<span class="addCustomerError">&emsp;<%= (productPriceError != null) ? productPriceError : ""%></span></label>
-                                <input type="number" required  step="any" name="productPrice" placeholder="Product price">
+                                <label for="productPrice">Price&emsp;<span class="addProductError">&emsp;<%= (productPriceError != null) ? productPriceError : ""%></span></label>
+                                <input type="number" required  step="any" name="productPrice" placeholder="Product Price">
                             </div>
-                            <!--
-                                            <div class="field productCategory">
-                                                <div class="input-area">
-                                                    <input type="text" required  name="productCategory" placeholder="product Category">
-                                                    <i class="icon fas fa-envelope"></i>
-                                                    <i class="error error-icon fas fa-exclamation-circle"></i>
-                                                </div>
-                                            </div>-->
-                            <div class="field productCategory">
+ 
+                            <div class="input-field">
                                 <div class="input-area">
-                                    <label for="productCategory">product Category</label>
-                                    <select name="productCategory" id="productCategory">
-                                        <option value="Book">Book</option>
-                                        <option value="Sport">Sport</option>
+                                    <label for="productCategory">Category</label>
+                                    <select name="productCategory" id="productCategory" class="select-option">
+                                        <option value="sport" class="select-option">Sport</option>
+                                        <option value="tech" class="select-option">Tech</option>
+                                        <option value="healthAndBeauty" class="select-option">Health & Beauty</option>
+                                        <option value="chocolate" class="select-option">Chocolate</option>
                                     </select>
                                 </div>
                             </div>
-
-
+                                
                             <div class="input-field">
-                                <label for="productDescription">product Description &emsp;<span class="addCustomerError">&emsp;<%= (productDescriptionError != null) ? productDescriptionError : ""%></span></label>
-                                <input type="text" required name="productDescription" placeholder="product Description">
-                            </div>
-
-
+                                <label for="productStock">Stock &emsp;<span class="addProductError">&emsp;<%= (productStockError != null) ? productStockError : ""%></span></label>
+                                <input type="number" required   name="productStock" placeholder="Product Stock">
+                            </div>    
+                                
                             <div class="input-field">
-                                <label for="productStock">product Stock &emsp;<span class="addCustomerError">&emsp;<%= (productStockError != null) ? productStockError : ""%></span></label>
-                                <input type="number" required   name="productStock" placeholder="product Stock">
+                                <label for="productDescription">Description &emsp;<span class="addProductError">&emsp;<%= (productDescriptionError != null) ? productDescriptionError : ""%></span></label>
+                                <input type="text" required name="productDescription" placeholder="Product Description">
                             </div>
-
-                            <input type="submit" value="Sing Up">
+                                
+                            <button class="addBtn" type="submit">
+                                <span class="btnText">Add</span>
+                            </button>
                         </div>
                     </div>
                 </div>
