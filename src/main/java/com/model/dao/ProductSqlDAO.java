@@ -10,35 +10,41 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductSqlDAO {
-
+// decare and inject the sql query
     private Statement st;
     private PreparedStatement updateSt;
     private String updateQuery = "UPDATE store.products SET productImage=?, productName=?, productPrice=? , productCategory=?, productDescription=?,productStock=?  WHERE productID=?";
     private PreparedStatement deleteSt;
     private String deleteQuery = "DELETE FROM store.products WHERE productID=?";
-
+//constructor to open connection to sql database
     public ProductSqlDAO(Connection connection) throws SQLException {
         this.st = connection.createStatement();
         this.updateSt = connection.prepareStatement(updateQuery);
         this.deleteSt = connection.prepareStatement(deleteQuery);
     }
 
-    //Create Query
+    //Create Query (id will be created in database)
     public void create(String productImage, String productName, double productPrice, String productCategory, String productDescription, int productStock) throws SQLException {
         String columns = "INSERT INTO store.products(productImage,productName,productPrice,productCategory,productDescription,productStock)";
         String values = "VALUES('" + productImage + "','" + productName + "','" + productPrice + "','" + productCategory + "','" + productDescription + "','" + productStock + "')";
         st.executeUpdate(columns + values);
     }
-
+//Create Query
     public void create(int productID, String productImage, String productName, double productPrice, String productCategory, String productDescription, int productStock) throws SQLException {
         String columns = "INSERT INTO store.products(productImage,productName,productPrice,productCategory,productDescription)";
         String values = "VALUES('" + productID + "','" + productImage + "','" + productName + "','" + productPrice + "','" + productCategory + "','" + productDescription + "','" + productStock + "')";
         st.executeUpdate(columns + values);
     }
-
+//Create Query (has all the values)
     public void create() throws SQLException {
         String columns = "INSERT INTO store.products(productImage,productName,productPrice,productCategory,productDescription,productStock)";
         String values = "VALUES('image', 'playstation','20.5','sport','football','5')";
+        st.executeUpdate(columns + values);
+    }
+    //Create Query gitting the name as parameter
+    public void create(String productName) throws SQLException {
+        String columns = "INSERT INTO store.products(productImage,productName,productPrice,productCategory,productDescription,productStock)";
+        String values = "VALUES('image','" + productName + "','20.5','sport','football',5)";
         st.executeUpdate(columns + values);
     }
 
@@ -46,12 +52,6 @@ public class ProductSqlDAO {
     public void updateStock(int productID, int newStock) throws SQLException {
         String query = "UPDATE store.products SET productStock=" + newStock + " WHERE productID = " + productID;
         st.executeUpdate(query);
-    }
-
-    public void create(String productName) throws SQLException {
-        String columns = "INSERT INTO store.products(productImage,productName,productPrice,productCategory,productDescription,productStock)";
-        String values = "VALUES('image','" + productName + "','20.5','sport','football',5)";
-        st.executeUpdate(columns + values);
     }
 
     //Read Query - Read One by product id
@@ -73,7 +73,7 @@ public class ProductSqlDAO {
         }
         return null;
     }
-
+    
     //Read Query - Read One by product name
     public Product getProduct(String productName) throws SQLException {
         String query = "SELECT * FROM store.products WHERE productName='" + productName + "'";
@@ -88,11 +88,9 @@ public class ProductSqlDAO {
                 String productCategory = rs.getString(5);
                 String productDescription = rs.getString(6);
                 int productStock = Integer.parseInt(rs.getString(7));
-
                 return new Product(productID, productImage, currentProductName, productPrice, productCategory, productDescription, productStock);
             }
         }
-
         return null;
     }
 
@@ -110,7 +108,6 @@ public class ProductSqlDAO {
             String productCategory = rs.getString(5);
             String productDescription = rs.getString(6);
             int productStock = Integer.parseInt(rs.getString(7));
-
             temp.add(new Product(productID, productImage, productName, productPrice, productCategory, productDescription, productStock));
         }
         return temp;
@@ -137,7 +134,6 @@ public class ProductSqlDAO {
                 temp.add(new Product(currentID, productImage, productName, productPrice, productCategory, productDescription, productStock));
             }
         }
-
         return temp;
     }
 

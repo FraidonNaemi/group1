@@ -57,7 +57,7 @@
                         
                         <div class="fields">
                             <div class="input-field">
-                                <label for="productImage">Image URL<span class="updateProductError"></span></label>
+                                <label for="productImage">Image URL<span class="updateProductError"style="color: red;"></span></label>
                                 <input type="text" name="productImage" value="<%= product.getProductImage()%>">
                             </div>
 
@@ -67,7 +67,7 @@
                             </div>
 
                             <div class="input-field">
-                                <label for="productPrice">Price&emsp;<span class="updateProductError">&emsp;<%= (productPriceError != null) ? productPriceError : ""%></span></label>
+                                <label for="productPrice" >Price&emsp;<span class="updateProductError" style="color: red;">&emsp;<%= (productPriceError != null) ? productPriceError : ""%></span></label>
                                 <input type="text" name="productPrice" value="<%= product.getProductPrice()%>" >
                             </div>
 
@@ -84,12 +84,12 @@
                             </div>
 
                             <div class="input-field">
-                                <label for="productStock">Stock &emsp;<span class="addCustomerError">&emsp;<%= (productStockError != null) ? productStockError : ""%></span></label>
+                                <label for="productStock">Stock &emsp;<span class="addCustomerError"style="color: red;">&emsp;<%= (productStockError != null) ? productStockError : ""%></span></label>
                                 <input type="text" name="productStock" value="<%= product.getProductStock()%>" >
                             </div>
                             
                             <div class="input-field">
-                                <label for="productDescription">Description &emsp;<span class="addCustomerError">&emsp;<%= (productDescriptionError != null) ? productDescriptionError : ""%></span></label>
+                                <label for="productDescription">Description &emsp;<span class="addCustomerError"style="color: red;">&emsp;<%= (productDescriptionError != null) ? productDescriptionError : ""%></span></label>
                                 <input type="text" name="productDescription" value="<%= product.getProductDescription()%>">
                             </div> 
                             

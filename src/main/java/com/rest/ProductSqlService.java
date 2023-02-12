@@ -26,11 +26,11 @@ import javax.xml.bind.JAXBException;
  *
  * @author 236369
  */
-@Path("/")
+@Path("productsql")
 public class ProductSqlService {
-
+// return all the products
     @GET
-    @Path("products") //http://localhost:8080/group1/rest/products
+    @Path("products") //http://localhost:8080/group1/rest/productsql/products
     @Produces(MediaType.APPLICATION_XML)
     public Products getProducts() throws JAXBException, FileNotFoundException, ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException, IOException {
         ProductSqlDAO productSqlDAO = new ProductSqlDAO(new SqlDBConnector().connection());
@@ -38,9 +38,9 @@ public class ProductSqlService {
         products.addAll(productSqlDAO.getProducts());
         return products;
     }
-
+// return one product by id
     @GET
-    @Path("product/productID/{productID}") //http://localhost:8080/group1/rest/product/productID/
+    @Path("product/productID/{productID}") //http://localhost:8080/group1/rest/productsql/product/productID/...
     @Produces(MediaType.APPLICATION_XML)
     public Products getProduct(@PathParam("productID") int productID) throws JAXBException, FileNotFoundException, ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException, IOException {
         ProductSqlDAO productSqlDAO = new ProductSqlDAO(new SqlDBConnector().connection());
@@ -51,9 +51,9 @@ public class ProductSqlService {
         return products;
     }
 
-    // Add new product
+    // Add new product(fixed value and return response message)
     @GET
-    @Path("addProduct") //http://localhost:8080/group1/rest/addProduct
+    @Path("addProduct") //http://localhost:8080/group1/rest/productsql/addProduct
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public Response addProduct() throws JAXBException, FileNotFoundException, ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException, IOException {
         ProductSqlDAO productSqlDAO = new ProductSqlDAO(new SqlDBConnector().connection());
@@ -65,9 +65,9 @@ public class ProductSqlService {
 
         return Response.status(200).entity(product).build();
     }
-    
+    //add new product using parameter if not exist , if exist return it .
     @GET
-    @Path("addproduct/{productName}") //http://localhost:8080/group1/rest/addproduct/........
+    @Path("addproduct/{productName}") //http://localhost:8080/group1/rest/productsql/addproduct/........
     @Produces(MediaType.APPLICATION_XML)
     public Products addProduct(@PathParam("productName") String productName) throws JAXBException, FileNotFoundException, ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException, IOException {
         ProductSqlDAO productSqlDAO = new ProductSqlDAO(new SqlDBConnector().connection());

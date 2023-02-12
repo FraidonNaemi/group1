@@ -7,6 +7,7 @@ import javax.xml.bind.annotation.*;
 @XmlRootElement(name = "product")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Product implements Serializable {
+//declare the fields
 
     private int productID;
     private String productImage;
@@ -15,6 +16,7 @@ public class Product implements Serializable {
     private String productCategory;
     private String productDescription;
     private int productStock;
+//empty constructor
 
     public Product() {
     }
@@ -26,8 +28,8 @@ public class Product implements Serializable {
         this.productCategory = productCategory;
         this.productDescription = productDescription;
         this.productStock = productStock;
-
     }
+//constructor create product
 
     public Product(int productID, String productImage, String productName, double productPrice, String productCategory, String productDescription, int productStock) {
         this.productID = productID;
@@ -38,6 +40,7 @@ public class Product implements Serializable {
         this.productDescription = productDescription;
         this.productStock = productStock;
     }
+// update product
 
     public void update(int productID, String productImage, String productName, double productPrice, String productCategory, String productDescription, int productStock) {
         this.productID = productID;
@@ -48,13 +51,35 @@ public class Product implements Serializable {
         this.productDescription = productDescription;
         this.productStock = productStock;
     }
+//decrease the stock amount
 
     public void decProductStock(int qunatity) {
         this.productStock = this.productStock - qunatity;
     }
+//increase the stock amount
 
     public void incProductStock(int qunatity) {
         this.productStock = this.productStock + qunatity;
+    }
+//match product by id
+
+    public boolean match(int productID) {
+        return this.productID == productID;
+    }
+//match product by the name
+
+    public boolean match(String productName) {
+        return this.productName == productName;
+    }
+//match product by the other product
+
+    public boolean match(Product other) {
+        return this.productID == other.productID;
+    }
+// getter and setters
+
+    public void setProductID(int productID) {
+        this.productID = productID;
     }
 
     public void setProductStock(int productStock) {
@@ -63,22 +88,6 @@ public class Product implements Serializable {
 
     public int getProductStock() {
         return productStock;
-    }
-
-    public boolean match(int productID) {
-        return this.productID == productID;
-    }
-
-    public boolean match(String productName) {
-        return this.productName == productName;
-    }
-
-    public boolean match(Product other) {
-        return this.productID == other.productID;
-    }
-
-    public void setProductID(int productID) {
-        this.productID = productID;
     }
 
     public void setProductImage(String productImage) {
@@ -124,6 +133,7 @@ public class Product implements Serializable {
     public String getProductDescription() {
         return productDescription;
     }
+//toString 
 
     @Override
     public String toString() {

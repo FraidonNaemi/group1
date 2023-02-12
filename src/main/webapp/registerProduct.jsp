@@ -105,11 +105,8 @@
 
         %>
 
-        <!-- Clock - Footer -->
-        <div class="clock">
-            <span class="clock-time"></span>
-            <span class="clock-ampm"></span>
+         <div class="footer">
+            AFSY © 2023
         </div>
-        <script src="js/clock.js"></script>
     </body>
 </html>
