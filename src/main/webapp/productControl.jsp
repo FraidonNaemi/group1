@@ -42,17 +42,19 @@
         <!-- Update Form -->
         <%
             String stockErorr = (String) session.getAttribute("stockErorr");
-
+            
             OrderProductSqlDAO orderProductSqlDAO = (OrderProductSqlDAO) session.getAttribute("orderProductSqlDAO");
             int orderID = (int) session.getAttribute("orderID");
-            List<OrderProduct> opList = orderProductSqlDAO.getAllOrderProducts(orderID);
+            //int orderID = Integer.parseInt(request.getParameter("orderID"));
+            List<OrderProduct> opList=  orderProductSqlDAO.getAllOrderProducts(orderID);
             OrderProducts ops = new OrderProducts();
             ops.addAll(opList);
+            //int productID = (int) session.getAttribute("productID");
             int productID = Integer.parseInt(request.getParameter("productID"));
             OrderProduct op = ops.orderProduct(orderID, productID);
+
             String submitted = request.getParameter("submitted");
             session.setAttribute("orderProduct", op);
-            session.setAttribute("productID", op.getOrderID());
         %>
 
 
@@ -78,7 +80,7 @@
                 </div>
                 <div class="field ID">
                     <div class="input-area">
-                        <input type="number" name="qunatity" value="<%= op.getQuantity()%>">
+                        <input type="number" name="qunatity" value="<%= op.getQuantity() %>">
                         <i class="icon fas fa-id"></i>
                         <i class="error error-icon fas fa-exclamation-circle"></i>
                     </div>
@@ -87,7 +89,7 @@
                 <div class="account-div">
                     <table class="account-table">
                         <tr>
-                            <td class="acc-td"><span class="account-delete-button" style="background: #FF2305; color: white; padding-top: 14px; padding-bottom: 14px; padding-left: 20px; padding-right: 20px; border-radius: 5px; font-size: 18px;"><a href="/group1/DeleteOrderProductServlet" class="account-delete-link" style="color: white;">Delete</a></span></td>
+                            <td class="acc-td"><span class="account-delete-button" style="background: #FF2305; color: white; padding-top: 14px; padding-bottom: 14px; padding-left: 20px; padding-right: 20px; border-radius: 5px; font-size: 18px;"><a href="/group1/DeleteOrderProductServlet?productID=<%= op.getProductID() %>" class="account-delete-link" style="color: white;">Delete</a></span></td>
                             <td class="acc-td"><input type="submit" class="update-input-account" value="Update" style="width: 100px;"></td>
                         </tr>
                     </table>

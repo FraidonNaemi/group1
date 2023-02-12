@@ -35,9 +35,9 @@ public class DeleteOrderProductServlet extends HttpServlet {
             //OrderSqlDAO orderSqlDAO = (OrderSqlDAO) session.getAttribute("orderSqlDAO");
             //Customer customer = (Customer) session.getAttribute("customer");
             int orderID = (Integer) session.getAttribute("orderID");
-            int productID = (Integer) session.getAttribute("productID");
+            int productID = Integer.parseInt(request.getParameter("productID"));
 
-            orderProductSqlDAO.delete(orderID, productID);
+            orderProductSqlDAO.delete(orderID, productID); 
         } catch (SQLException ex) {
             Logger.getLogger(DeleteOrderProductServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
