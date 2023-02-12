@@ -8,7 +8,6 @@ package com.controller;
 import com.model.Customer;
 import com.model.dao.OrderSqlDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -34,7 +33,8 @@ public class DeleteOrderServlet extends HttpServlet {
             Customer customer = (Customer) session.getAttribute("customer");
             int orderID = Integer.parseInt(request.getParameter("orderID"));
             orderSqlDAO.deleteOrder(customer.getCustomerID(), orderID);
-
+            
+            session.setAttribute("orderNotification", "Order "+orderID+" Is Deleted!");
         } catch (SQLException ex) {
             Logger.getLogger(DeleteOrderServlet.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -8,7 +8,6 @@ package com.controller;
 import com.model.Customer;
 import com.model.dao.OrderSqlDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.logging.Level;
@@ -39,7 +38,9 @@ public class CreateOrderServlet extends HttpServlet {
             orderSqlDAO.create(customer.getCustomerID(), orderDate.toString());
             int orderID = orderSqlDAO.lastOrderID(customer.getCustomerID());
             session.setAttribute("orderID", orderID);
-
+            
+            session.setAttribute("orderNotification", "Order "+orderID+" Is Created!");
+            
         } catch (SQLException ex) {
             Logger.getLogger(CreateOrderServlet.class.getName()).log(Level.SEVERE, null, ex);
         }

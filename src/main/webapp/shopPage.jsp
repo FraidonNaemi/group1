@@ -26,6 +26,16 @@
         <%@include file="/includes/navbar.jsp"%>
         <div class="container">
             <div class="card-header my-3">All Products</div>
+            <div>
+                <%
+                    String createNotification = (String) session.getAttribute("createNotification");
+                    if(createNotification != null)
+                    out.println(createNotification);
+                    String addNotification = (String) session.getAttribute("addNotification");
+                    if(addNotification != null)
+                    out.println(addNotification);
+                %>
+            </div>
             <div class="row">
                 <%
                     if (!products.isEmpty()) {
@@ -54,8 +64,11 @@
                     } else {
                         out.println("There is no proucts");
                     }
+                    session.setAttribute("createNotification", "");
+                    session.setAttribute("addNotification", "");
                 %>
             </div>
+
         </div>
         <%@include file="/includes/footer.jsp"%>
     </body>
