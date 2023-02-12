@@ -1,8 +1,5 @@
 <%@page import="java.util.List"%>
 <%@page import="com.model.dao.OrderProductSqlDAO"%>
-<!--here, customer can see the current order and remove, add the products from that order
-customer can update the order name here too-->
-
 <%@page import="com.model.dao.OrderSqlDAO"%>
 <%@page import="javax.xml.transform.stream.StreamResult"%>
 <%@page import="com.model.dao.XmlTransformer"%>
@@ -15,7 +12,7 @@ customer can update the order name here too-->
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Home</title>
+        <title>My Order</title>
         <link rel="stylesheet" href="css/style.css"/>
         <link rel="stylesheet" href="css/orderView.css"/>
     </head>
