@@ -31,23 +31,10 @@ public class AdminRegisterServlet extends HttpServlet {
             String adminEmail = request.getParameter("email");
             String adminPassword = request.getParameter("password");
             String adminDOB = request.getParameter("dob");
-            String adminPhoneNumber = request.getParameter("phonenumber");
+            String adminPhoneNumber = request.getParameter("phoneNumber");
             String adminAddress = request.getParameter("address");
             
-            String emailRegEx = "([a-zA-Z]+)[.]([a-zA-Z]+)@store.com";
-            String passRegEx = "([A-Z][a-z]{5,})\\d{2,}";
-
-            if (!adminEmail.matches(emailRegEx) && !adminPassword.matches(passRegEx)) {
-                session.setAttribute("emailPassError", "Incorrect email and password format");
-                response.sendRedirect("register.jsp");
-            } else if (!adminEmail.matches(emailRegEx)) {
-                session.setAttribute("emailError", "Incorrect email format");
-                response.sendRedirect("register.jsp");
-            } else if (!adminPassword.matches(passRegEx)) {
-                session.setAttribute("passError", "Incorrect password format");
-                response.sendRedirect("register.jsp");
-                
-            } else {
+                    
                 
                
                    Admin adminSql = null;
@@ -58,7 +45,7 @@ public class AdminRegisterServlet extends HttpServlet {
             }
 
             if (adminSql != null) {
-                session.setAttribute("emailError", "Customer already exists");
+                session.setAttribute("addError", "admin already exists");
                 
                 request.getRequestDispatcher("register.jsp").include(request, response);
             } else {
@@ -69,7 +56,7 @@ public class AdminRegisterServlet extends HttpServlet {
                     session.setAttribute("admin", admin);
                     
                     System.out.println(admin);
-                    request.getRequestDispatcher("main.jsp").include(request, response);
+                    request.getRequestDispatcher("adminMain.jsp").include(request, response);
 
                 } catch (SQLException ex) {
                     Logger.getLogger(AdminRegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
@@ -85,4 +72,3 @@ public class AdminRegisterServlet extends HttpServlet {
             
     }
 
-}

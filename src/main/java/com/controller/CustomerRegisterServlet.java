@@ -30,28 +30,10 @@ public class CustomerRegisterServlet extends HttpServlet {
             String customerEmail = request.getParameter("email");
             String customerPassword = request.getParameter("password");
             String customerDOB = request.getParameter("dob");
-            String customerPhoneNumber = request.getParameter("phonenumber");
+            String customerPhoneNumber = request.getParameter("phoneNumber");
             String customerAddress = request.getParameter("address");
             
 
-            
-            String customerEmailRegEx = "([a-zA-Z]+)[.]([a-zA-Z]+)@store.com";
-            String customerPasswordRegEx = "([A-Z][a-z]{5,12})\\d{3,6}";
-            
-
-            
-            if (!customerEmail.matches(customerEmailRegEx) && !customerPassword.matches(customerPasswordRegEx)) {
-                session.setAttribute("emailPassError", "Incorrect email and password format");
-                response.sendRedirect("register.jsp");
-            } else if (!customerEmail.matches(customerEmailRegEx)) {
-                session.setAttribute("emailError", "Incorrect email format");
-                response.sendRedirect("register.jsp");
-            } else if (!customerPassword.matches(customerPasswordRegEx)) {
-                session.setAttribute("passError", "Incorrect password format");
-                response.sendRedirect("register.jsp");
-               
-            } else {
-                
                
                    Customer customerSql = null;
             try {
@@ -61,7 +43,7 @@ public class CustomerRegisterServlet extends HttpServlet {
             }
 
             if (customerSql != null) {
-                session.setAttribute("emailError", "Customer already exists");
+                session.setAttribute("addError", "Customer already exists");
                 
                 request.getRequestDispatcher("register.jsp").include(request, response);
             } else {
@@ -82,4 +64,3 @@ public class CustomerRegisterServlet extends HttpServlet {
         }
     }
 
-}

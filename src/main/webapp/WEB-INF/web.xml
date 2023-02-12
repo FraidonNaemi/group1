@@ -57,6 +57,11 @@
         <servlet-name>RegisterServlet</servlet-name>
         <servlet-class>com.controller.RegisterServlet</servlet-class>
     </servlet>
+    
+    <servlet>
+        <servlet-name>RegexRegisterServlet</servlet-name>
+        <servlet-class>com.controller.RegexRegisterServlet</servlet-class>
+    </servlet>
     <servlet>
         <servlet-name>CustomerRegisterServlet</servlet-name>
         <servlet-class>com.controller.CustomerRegisterServlet</servlet-class>
@@ -220,6 +225,10 @@
     <servlet-mapping>
         <servlet-name>DeleteOrderProductServlet</servlet-name>
         <url-pattern>/DeleteOrderProductServlet</url-pattern>
+    </servlet-mapping>    
+    <servlet-mapping>
+        <servlet-name>RegexRegisterServlet</servlet-name>
+        <url-pattern>/RegexRegisterServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CreateOrderServlet</servlet-name>

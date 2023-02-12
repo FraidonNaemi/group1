@@ -48,7 +48,7 @@
         <div class="container">
             <header>Update Product</header>
             <div class="confirm-field" style="text-align: center;">
-                <p style="color: green;"><%= (submitted != null) ? "Updated successfully" : ""%></p>
+                <p style="color: green;"><%= (submitted != null  ) ? "Updated successfully" : ""%></p>
             </div>
             <form method="POST" action="/group1/RegexUpdateProductServlet">
                 <div class="form first">

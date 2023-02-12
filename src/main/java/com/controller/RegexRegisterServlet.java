@@ -43,6 +43,7 @@ public class RegexRegisterServlet extends HttpServlet {
         String phoneNumberRegEx = "^[\\+\\d]\\d{9,11}$";
         String addressRegEx = "([\\d]{1,4})([A-Za-z\\s\\d\\,\\-\\/]{10,97})";
 
+//track the error state of different fields in a form
         boolean nameError = false;
         boolean emailError = false;
         boolean passwordError = false;
@@ -51,19 +52,19 @@ public class RegexRegisterServlet extends HttpServlet {
         boolean addressError = false;
 
         if (!name.matches(nameRegEx)) {
-            session.setAttribute("nameError", "Incorrect name format");
+            session.setAttribute("nameError", "Incorrect format");
             nameError = true;
 
         }
 
         if (!email.matches(emailRegEx)) {
-            session.setAttribute("emailError", "Incorrect email format");
+            session.setAttribute("emailError", "Incorrect format");
             emailError = true;
 
         }
 
         if (!password.matches(passwordRegEx)) {
-            session.setAttribute("passwordError", "Incorrect password format");
+            session.setAttribute("passwordError", "Incorrect format");
             passwordError = true;
         }
 //        if (!dob.matches(dobRegEx)) {
@@ -71,11 +72,11 @@ public class RegexRegisterServlet extends HttpServlet {
 //            dobError = true;
 //        }
         if (!phoneNumber.matches(phoneNumberRegEx)) {
-            session.setAttribute("phoneNumberError", "Incorrect phoneNumber format");
+            session.setAttribute("phoneNumberError", "Incorect format");
             phoneNumberError = true;
         }
         if (!address.matches(addressRegEx)) {
-            session.setAttribute("addressError", "Incorrect address format");
+            session.setAttribute("addressError", "Incorrect  format");
             addressError = true;
         }
 
