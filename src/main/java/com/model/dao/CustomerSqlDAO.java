@@ -32,10 +32,11 @@ public class CustomerSqlDAO {
         
         st.executeUpdate(columns + values);
     }
-    
+    // Create Customer Query
     public void create(String customerEmail) throws SQLException {
         String columns = "INSERT INTO store.customers(customerName, customerEmail, customerPassword, customerDOB, customerPhoneNumber, customerAddress)";
-        String values = "VALUES('Ad Astra','" + customerEmail + "','Helload123','2000-02-03', '0450179669', '51 George St, Sydney NSW 2002')";
+        String values = "VALUES('Example Example','" + customerEmail + "','Helloexample123','2000-02-03', '0450179669', '51 George St, Sydney NSW 2002')";
+        // String values = "VALUES('Test Test','" + customerEmail + "','Hellotest123','2000-02-03', '0450179669', '51 George St, Sydney NSW 2002')";
         st.executeUpdate(columns + values);
     }
     

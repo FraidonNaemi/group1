@@ -29,8 +29,8 @@
                 <i class="fas fa-bars"></i>
             </label>
             <ul>
-                <li><a href="adminView.jsp">Dashboard</a></li>
-                <li><a class="active" href="#">View Customer</a></li>
+                <li><a href="adminCustomerView.jsp">Customer Management</a></li>
+                <li><a class="active" href="#">View Customers</a></li>
                 <li><a href="/group1/LogoutServlet">Logout</a></li>
             </ul>
         </nav>

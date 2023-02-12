@@ -6,7 +6,6 @@ com\controller\AdminLoginServlet.class
 com\controller\AdminCustomerAccountServlet.class
 com\controller\InitServlet.class
 com\controller\CustomerLoginServlet.class
-com\rest\CustomerSqlService.class
 com\model\dao\ProductSqlDAO.class
 com\model\Customer.class
 com\controller\AdminAccountServlet.class
@@ -21,6 +20,7 @@ com\controller\DeleteOrderServlet.class
 com\controller\AdminDeleteServlet.class
 com\model\dao\SqlDB.class
 com\model\dao\SqlDBConnector.class
+com\rest\CustomerManagementSqlService.class
 com\model\dao\OrderSqlDAO.class
 com\controller\CreateOrderServlet.class
 com\model\Customers.class

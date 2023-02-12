@@ -5,9 +5,9 @@
 <html lang="en" dir="ltr">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
-        <title>Customer Account</title>
+        <title>Account Management</title>
         <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/account.css">
+        <link rel="stylesheet" href="css/customerAccount.css">
         
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     </head>
@@ -29,7 +29,7 @@
                 <li>  
                     <a href="customerMain.jsp">Dashboard</a>
                 </li>
-                <li><a class="active" href="#">Customer Account</a></li>
+                <li><a class="active" href="#">Account Management</a></li>
                 <li><a href="/group1/LogoutServlet">Logout</a></li>
             </ul>
         </nav>
@@ -48,10 +48,10 @@
 
         <!-- Update Customer Form -->
         <div class="container" style="text-align: left!important; margin: 10% 25%;">
-        <header>Update Account</header>
+        <header class="customerAccountHeader">Update Account</header>
         <form class="updateForm" method="POST" action="/group1/CustomerAccountServlet">
             <div class="form first">
-                <div class="details personal">
+                <div class="personal-details">
                     <span class="title">ID: <%=customer.getCustomerID()%></span>
 
                     <div class="fields">
@@ -90,7 +90,7 @@
                         
                         <div class="buttons">
                             <button class="deleteBtn">
-                                 <span class="btnText"><a href="/group1/DeleteCustomerServlet?customerEmail=<%= customer.getCustomerEmail()%>" style="text-decoration: none; color:#fff;">Delete</a></span>
+                                 <span class="btnText"><a href="/group1/CustomerDeleteServlet" style="text-decoration: none; color:#fff;">Delete</a></span>
                             </button>
 
                             <button class="updateBtn" type="submit">
