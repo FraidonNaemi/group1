@@ -6,7 +6,7 @@
             <head>
                 <title>My orders</title>
                 <link rel="stylesheet" type="text/css" href="css/style.css" />
-                <link rel="stylesheet" type="text/css" href="css/users.css" />
+                <link rel="stylesheet" type="text/css" href="css/orders.css" />
             </head>
             <body>
                 <xsl:apply-templates/>
@@ -14,22 +14,20 @@
         </html>
     </xsl:template>
     <xsl:template match="orders">
-        <table class="content-table" style="margin-top:100px!important;">
+        <table class="content-table">
             <thead>
-                <tr colspan = "3" >
-                    <h3>Orders List</h3>
-                </tr>
-                <tr>
-                    <th class="td-title">ID</th>
-                    <th class="td-title">Date</th>
-                    <th class="td-title">Customer ID</th>
+                <tr class="orderList">
+                    <th colspan="3">
+                        <h3>Order List</h3>
+                    </th>
+                    <tr class="orderHeaderItems">
+                        <th class="td-title">Order ID</th>
+                        <th class="td-title">Date</th>
+                        <th class="td-title">Customer ID</th>
+                    </tr>
                 </tr>
             </thead>
             <tbody>
-                
-                    
-                    
-                
                 <xsl:apply-templates/>
             </tbody>
         </table>

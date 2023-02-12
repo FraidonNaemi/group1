@@ -1,0 +1,44 @@
+.buttons {
+    position: relative;
+    align-items: center;
+    height: 45px;
+    width: 400px;
+    margin: auto;
+    margin-top: 25px;
+}
+
+button {
+    height: 50px;
+    margin-top: 30px;
+    color: #fff;
+    padding: 10px 20px 10px 20px;
+    border: none;
+    background: #5372F0;
+    cursor: pointer;
+    border-bottom: 2px solid rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    border-radius: 6px;
+    margin-left: 46.5%;
+    
+}
+
+button:hover{
+    background-color: #265df2;
+}
+
+.buttons{
+    display: flex;
+    align-items: center;
+}
+
+
+
+.deleteBtn {
+    font-size: 19px;
+}
+
+.deleteLink {
+    text-decoration: none;
+    color: #fff;
+    
+}

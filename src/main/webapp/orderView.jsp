@@ -1,10 +1,3 @@
-
-<%-- 
-    Document   : orderView
-    Created on : 01-Feb-2023, 12:56:04 PM
-    Author     : 236369
---%>
-
 <%@page import="java.util.List"%>
 <%@page import="com.model.dao.OrderProductSqlDAO"%>
 <!--here, customer can see the current order and remove, add the products from that order
@@ -24,6 +17,7 @@ customer can update the order name here too-->
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Home</title>
         <link rel="stylesheet" href="css/style.css"/>
+        <link rel="stylesheet" href="css/orderView.css"/>
     </head>
     <body>
         <!-- Navigation Bar -->
@@ -36,10 +30,11 @@ customer can update the order name here too-->
                 <i class="fas fa-bars"></i>
             </label>
             <ul>
-                <li><a class="active" href="#">Home</a></li>
-                <li><a href="myOrders.jsp">back</a></li>
-                <li><a href="/group1/LogoutServlet">Logout</a></li>
+                <li><a href="customerMain.jsp">Dashboard</a></li>
                 <li><a href="shopPage.jsp">Shop</a></li>
+                <li><a class="active" href="#">My Order</a></li>
+                <li><a href="myOrders.jsp">Orders</a></li>
+                <li><a href="/group1/LogoutServlet">Logout</a></li>
             </ul>
         </nav>
 
@@ -47,18 +42,26 @@ customer can update the order name here too-->
             OrderProductSqlDAO orderProductSqlDAO = (OrderProductSqlDAO) session.getAttribute("orderProductSqlDAO");
             int orderID = Integer.parseInt(request.getParameter("orderID"));
             OrderProducts orderProducts = new OrderProducts();
-            orderProducts.addAll(orderProductSqlDAO.getAllOrderProducts(orderID));
-            XmlTransformer transformer = new XmlTransformer();
-            transformer.transform(xslPath, orderProducts, new StreamResult(out));
+            List<OrderProduct> opList = orderProductSqlDAO.getAllOrderProducts(orderID);
+            if (!opList.isEmpty()) {
+                orderProducts.addAll(opList);
+                XmlTransformer transformer = new XmlTransformer();
+                transformer.transform(xslPath, orderProducts, new StreamResult(out));
+            } else {
+                out.print("No Product To View! Please Go To Shop To Add Some!");
+            }
         %>
+        
         <!-- Remove a product for the order -->
-        <span><a href="/group1/DeleteOrderServlet?orderID=<%= orderID %>">Delete this Order</a></span>
-        <% session.setAttribute("orderID", orderID); %>
-        <!-- Clock - Footer -->
-        <div class="clock">
-            <span class="clock-time"></span>
-            <span class="clock-ampm"></span>
+        <button class="deleteBtn" type="submit">
+            <span class="btnText"><a class="deleteLink" href="/group1/DeleteOrderServlet?orderID=<%= orderID%>">Delete Order</a></span>
+        </button>
+        
+        <% session.setAttribute("orderID", orderID);%>
+        
+        <!-- Footer -->
+        <div class="footer">
+            AFSY © 2023
         </div>
-        <script src="js/clock.js"></script>
     </body>
 </html>

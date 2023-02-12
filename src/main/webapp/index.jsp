@@ -1,9 +1,3 @@
-<%-- 
-    Document   : index
-    Created on : Jan 24, 2023, 9:43:17 AM
-    Author     : group1
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -30,19 +24,19 @@
             </ul>
         </nav>
         
-        <div class="welcomeMessage">Welcome to AFSY Store.</div>
+        <div class="welcomeMessage">Welcome to AFSY Store!</div>
         
         <!--  Slider -->
         <div class="mainSlider">
             <div class="slider">
-                <span style="--i:1;"><img src="img/2084.jpg" alt="2084"></span>
-                <span style="--i:2;"><img src="img/artifactSpace.jpg" alt="artifact space"></span>
-                <span style="--i:3;"><img src="img/cosmicCareers.jpg" alt="cosmic careers"></span>
-                <span style="--i:4;"><img src="img/howToDieInSpace.jpg" alt="how to die in space"></span>
-                <span style="--i:5;"><img src="img/space2069.jpg" alt="space 2069"></span>
-                <span style="--i:6;"><img src="img/theGodOfEquation.jpg" alt="the god of equation"></span>
-                <span style="--i:7;"><img src="img/theLastAstronaunt.jpg" alt="the last astronaunt"></span>
-                <span style="--i:8;"><img src="img/theQuantumSeries.jpg" alt="the quantum series"></span>
+                <span style="--i:1;"><img src="img/pantene-shampoo.jpg" alt="pantene shampoo"></span>
+                <span style="--i:2;"><img src="img/punch-bag.jpg" alt="punch bag"></span>
+                <span style="--i:3;"><img src="img/apple-watch.jpg" alt="apple watch"></span>
+                <span style="--i:4;"><img src="img/apple-ipad.jpg" alt="apple ipad"></span>
+                <span style="--i:5;"><img src="img/sport-bag.jpg" alt="sport bag"></span>
+                <span style="--i:6;"><img src="img/homedics-massager.jpg" alt="homedics massager"></span>
+                <span style="--i:7;"><img src="img/men-shoes.jpg" alt="men sport shoes"></span>
+                <span style="--i:8;"><img src="img/dove-body-wash.jpg" alt="dove body wash"></span>
             </div>
         </div>
         

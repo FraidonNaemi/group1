@@ -1,0 +1,36 @@
+:root{
+    /* light background color */
+    --primary-color: #edf2f2;
+
+    /* dark background color */
+    --secondary-color: #212121;
+
+    /* dark navbar color */
+    --teriary-color: #1b1b1b;
+
+}
+
+body{
+    min-height: 100vh;
+    width: 100vw;
+    background-color: var(--primary-color)!important;
+}
+
+.navbar{
+    display: flex;
+    height: 80px;
+    width: 100%;
+    background: var(--teriary-color) !important;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 50px 0 100px;
+    flex-wrap: wrap;
+    font-size: 18px;
+}
+
+.card-header {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+}

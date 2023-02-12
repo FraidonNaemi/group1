@@ -6,6 +6,7 @@
 package com.controller;
 
 import com.model.Customer;
+import com.model.Order;
 import com.model.OrderProduct;
 import com.model.OrderProducts;
 import com.model.Product;
@@ -14,6 +15,8 @@ import com.model.dao.OrderSqlDAO;
 import com.model.dao.ProductSqlDAO;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -47,26 +50,55 @@ public class CreateOrderProductServlet extends HttpServlet {
 
             ProductSqlDAO productSqlDAO = (ProductSqlDAO) session.getAttribute("productSqlDAO");
             Product product = productSqlDAO.getProduct(productID);
+            List<Order> customerOrders = orderSqlDAO.getAllOrders(customer.getCustomerID());
 
-            if ((product.getProductStock() >= 1)) {
+            if (customerOrders.isEmpty()) {
 
-                if (orderProducts.isProductExsist(orderID, productID)) {
+                LocalDate orderDate = java.time.LocalDate.now();
+                orderSqlDAO.create(customer.getCustomerID(), orderDate.toString());
+                orderID = orderSqlDAO.lastOrderID(customer.getCustomerID());
+                session.setAttribute("orderNotification", "Order " + orderID + " Is Created!");
+                if ((product.getProductStock() >= 1)) {
 
-                    product.decProductStock(1);
-                    int newStock = product.getProductStock();
-                    productSqlDAO.updateStock(productID, newStock);
-                    int newQuant = orderProduct.getQuantity() + 1;
-                    orderProductSqlDAO.update(newQuant, orderID, productID);
-                    session.setAttribute("addNotification", "Current Quantity Of "+product.getProductName()+" Is Increased In "+orderID+", Current Quantity Is: "+orderProduct.getQuantity()+"");
-                } else {
-                    product.decProductStock(1);
-                    int newStock = product.getProductStock();
-                    productSqlDAO.updateStock(productID, newStock);
-                    orderProductSqlDAO.create(orderID, productID, 1);
-                    session.setAttribute("createNotification", "Product "+product.getProductName()+" Is Added To "+orderID+"!");
+                    if (orderProducts.isProductExsist(orderID, productID)) {
+
+                        product.decProductStock(1);
+                        int newStock = product.getProductStock();
+                        productSqlDAO.updateStock(productID, newStock);
+                        int newQuant = orderProduct.getQuantity() + 1;
+                        orderProductSqlDAO.update(newQuant, orderID, productID);
+                        session.setAttribute("addNotification", "Current Quantity Of " + product.getProductName() + " Is Increased In Order " + orderID + ", Current Quantity Is: " + orderProduct.getQuantity() + "");
+                    } else {
+                        product.decProductStock(1);
+                        int newStock = product.getProductStock();
+                        productSqlDAO.updateStock(productID, newStock);
+                        orderProductSqlDAO.create(orderID, productID, 1);
+                        session.setAttribute("createNotification", "Product " + product.getProductName() + " Is Added To " + orderID + "!");
+                    }
                 }
 
-            } 
+            } else {
+                if ((product.getProductStock() >= 1)) {
+
+                    if (orderProducts.isProductExsist(orderID, productID)) {
+
+                        product.decProductStock(1);
+                        int newStock = product.getProductStock();
+                        productSqlDAO.updateStock(productID, newStock);
+                        int newQuant = orderProduct.getQuantity() + 1;
+                        orderProductSqlDAO.update(newQuant, orderID, productID);
+                        session.setAttribute("addNotification", "Current Quantity Of " + product.getProductName() + " Is Increased In " + orderID + ", Current Quantity Is: " + orderProduct.getQuantity() + "");
+                    } else {
+                        product.decProductStock(1);
+                        int newStock = product.getProductStock();
+                        productSqlDAO.updateStock(productID, newStock);
+                        orderProductSqlDAO.create(orderID, productID, 1);
+                        session.setAttribute("createNotification", "Product " + product.getProductName() + " Is Added To " + orderID + "!");
+                    }
+
+                }
+            }
+            session.setAttribute("orderID", orderID);
             session.setAttribute("orderID", orderID);
         } catch (SQLException ex) {
             Logger.getLogger(CreateOrderProductServlet.class.getName()).log(Level.SEVERE, null, ex);
