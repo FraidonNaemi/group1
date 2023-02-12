@@ -6,6 +6,7 @@ com\controller\AdminLoginServlet.class
 com\controller\AdminCustomerAccountServlet.class
 com\controller\InitServlet.class
 com\controller\CustomerLoginServlet.class
+com\rest\CustomerSqlService.class
 com\model\dao\ProductSqlDAO.class
 com\model\Customer.class
 com\controller\AdminAccountServlet.class
@@ -44,6 +45,7 @@ com\controller\AdminRegisterServlet.class
 com\model\OrderProducts.class
 com\model\Product.class
 com\rest\OrderSqlService.class
+com\rest\AdminSqlService.class
 com\controller\CreateOrderProductServlet.class
 com\controller\CustomerAccountServlet.class
 com\controller\LogoutServlet.class

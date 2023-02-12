@@ -34,6 +34,14 @@ public class AdminSqlDAO {
         System.out.println(values);
         st.executeUpdate(columns + values);
     }
+    
+    public void create(String adminEmail) throws SQLException {
+        String columns = "INSERT INTO store.admins(adminName,adminEmail,adminPassword,adminDOB,adminPhoneNumber,adminAddress)";
+        String values = "VALUES('matt smith' , '" + adminEmail + "','Hellomatt123','1999-08-20','0435678976','54 Victoria avenue, Sydney 2222')";
+        System.out.println(values);
+        st.executeUpdate(columns + values);
+    }
+
 
     public void update(String adminName, String adminEmail, String adminPassword, String adminDOB, String adminPhoneNumber, String adminAddress,
              int adminID) throws SQLException {
