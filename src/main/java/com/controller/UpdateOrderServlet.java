@@ -63,9 +63,10 @@ public class UpdateOrderServlet extends HttpServlet {
                         orderProductSqlDAO.update(quantity, orderID, productID);
                         int newStock = stockBeforeUpdate - newQuant;
                         productSqlDAO.updateStock(productID, newStock);
-
+                        
+                        session.setAttribute("stockError", "Quantity Is Updated");
                     } else {
-                        //erorr
+                        session.setAttribute("stockError", "Not Enoughe Stock!");
                     }
 
                     //salling
@@ -76,16 +77,20 @@ public class UpdateOrderServlet extends HttpServlet {
                     int newStock = stockBeforeUpdate + newQuant;
                     productSqlDAO.updateStock(productID, newStock);
                     orderProductSqlDAO.update(quantity, orderID, productID);
-
+                    
+                    session.setAttribute("stockError", "Quantity Is Updated");
                 } else {
-                    session.setAttribute("stockErorr", "Not Enoughe Stock!");
+                    session.setAttribute("stockError", "Not Enoughe Stock!");
                     request.getRequestDispatcher("productControl.jsp").include(request, response);
                 }
+            }else{
+                session.setAttribute("stockError", "Quantity Must Be At Least 1!");
+                request.getRequestDispatcher("productControl.jsp").include(request, response);
             }
 
         } catch (SQLException ex) {
             Logger.getLogger(UpdateOrderServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        request.getRequestDispatcher("orderView.jsp").include(request, response);
+        request.getRequestDispatcher("productControl.jsp").include(request, response);
     }
 }

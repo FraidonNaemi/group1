@@ -41,12 +41,12 @@
 
         <!-- Update Form -->
         <%
-            String stockErorr = (String) session.getAttribute("stockErorr");
-            
+            String stockError = (String) session.getAttribute("stockError");
+
             OrderProductSqlDAO orderProductSqlDAO = (OrderProductSqlDAO) session.getAttribute("orderProductSqlDAO");
             int orderID = (int) session.getAttribute("orderID");
             //int orderID = Integer.parseInt(request.getParameter("orderID"));
-            List<OrderProduct> opList=  orderProductSqlDAO.getAllOrderProducts(orderID);
+            List<OrderProduct> opList = orderProductSqlDAO.getAllOrderProducts(orderID);
             OrderProducts ops = new OrderProducts();
             ops.addAll(opList);
             //int productID = (int) session.getAttribute("productID");
@@ -61,11 +61,15 @@
         <div class="wrapper-account" style="height: 650px!important;">
             <header>Item Edit</header>
             <div class="confirm-field">
-                <p><%= (submitted != null) ? "Updated successfully" : ""%></p>
+                <p>
+                    <%if (stockError != null)
+                            out.print(stockError);%>
+                </p>
             </div>
             <form method="POST" action="/group1/UpdateOrderServlet">
                 <div class="field ID">
                     <div class="input-area">
+                        <label for="productImage">Order ID<span class="addCustomerError"></span></label>
                         <input type="text" name="orderID" value="<%= op.getOrderID()%>" readonly="true">
                         <i class="icon fas fa-id"></i>
                         <i class="error error-icon fas fa-exclamation-circle"></i>
@@ -73,6 +77,7 @@
                 </div>
                 <div class="field ID">
                     <div class="input-area">
+                        <label for="productImage">Product ID<span class="addCustomerError"></span></label>
                         <input type="text" name="productID" value="<%= op.getProductID()%>" readonly="true">
                         <i class="icon fas fa-id"></i>
                         <i class="error error-icon fas fa-exclamation-circle"></i>
@@ -80,7 +85,8 @@
                 </div>
                 <div class="field ID">
                     <div class="input-area">
-                        <input type="number" name="qunatity" value="<%= op.getQuantity() %>">
+                        <label for="productImage">Product Quantity <span class="addCustomerError"></span></label>
+                        <input type="number" name="qunatity" value="<%= op.getQuantity()%>">
                         <i class="icon fas fa-id"></i>
                         <i class="error error-icon fas fa-exclamation-circle"></i>
                     </div>
@@ -89,7 +95,7 @@
                 <div class="account-div">
                     <table class="account-table">
                         <tr>
-                            <td class="acc-td"><span class="account-delete-button" style="background: #FF2305; color: white; padding-top: 14px; padding-bottom: 14px; padding-left: 20px; padding-right: 20px; border-radius: 5px; font-size: 18px;"><a href="/group1/DeleteOrderProductServlet?productID=<%= op.getProductID() %>" class="account-delete-link" style="color: white;">Delete</a></span></td>
+                            <td class="acc-td"><span class="account-delete-button" style="background: #FF2305; color: white; padding-top: 14px; padding-bottom: 14px; padding-left: 20px; padding-right: 20px; border-radius: 5px; font-size: 18px;"><a href="/group1/DeleteOrderProductServlet?productID=<%= op.getProductID()%>" class="account-delete-link" style="color: white;">Delete</a></span></td>
                             <td class="acc-td"><input type="submit" class="update-input-account" value="Update" style="width: 100px;"></td>
                         </tr>
                     </table>
@@ -99,6 +105,7 @@
         <%
             submitted = "";
             session.setAttribute("submitted", submitted);
+            session.setAttribute("stockError", "");
         %>
 
         <!-- Footer -->

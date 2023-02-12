@@ -37,6 +37,18 @@
         </nav>
         <div>
             <!--                view all orders-->
+            <div>
+                <%
+                    String orderNotification = (String) session.getAttribute("orderNotification");
+                    String opDeleteNotification = (String) session.getAttribute("opDeleteNotification");
+                    if (opDeleteNotification != null) {
+                        out.print(opDeleteNotification);
+                    }
+                    if (orderNotification != null) {
+                        out.print(orderNotification);
+                    }
+                %>
+            </div>
             <%
                 Customer customer = (Customer) session.getAttribute("customer");
                 String xslPath = application.getRealPath("/xsl/orders.xsl");
@@ -46,9 +58,14 @@
                 XmlTransformer transformer = new XmlTransformer();
                 transformer.transform(xslPath, orders, new StreamResult(out));
             %>
-            <!-- Footer -->
-            <div class="footer">
-                AFSY © 2023
-            </div>
+        </div>
+        <%
+            session.setAttribute("orderNotification", "");
+            session.setAttribute("opDeleteNotification", "");
+        %>
+        <!-- Footer -->
+        <div class="footer">
+            AFSY © 2023
+        </div>
     </body>
 </html>

@@ -5,11 +5,11 @@
  */
 package com.controller;
 
-import com.model.Customer;
+import com.model.OrderProduct;
+import com.model.Product;
 import com.model.dao.OrderProductSqlDAO;
-import com.model.dao.OrderSqlDAO;
+import com.model.dao.ProductSqlDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,12 +32,20 @@ public class DeleteOrderProductServlet extends HttpServlet {
         try {
             HttpSession session = request.getSession();
             OrderProductSqlDAO orderProductSqlDAO = (OrderProductSqlDAO) session.getAttribute("orderProductSqlDAO");
-            //OrderSqlDAO orderSqlDAO = (OrderSqlDAO) session.getAttribute("orderSqlDAO");
-            //Customer customer = (Customer) session.getAttribute("customer");
+            ProductSqlDAO productSqlDAO = (ProductSqlDAO) session.getAttribute("productSqlDAO");
+
             int orderID = (Integer) session.getAttribute("orderID");
             int productID = Integer.parseInt(request.getParameter("productID"));
+            Product product = productSqlDAO.getProduct(productID);
+            OrderProduct orderProduct = orderProductSqlDAO.getOrderProduct(orderID, productID);
 
-            orderProductSqlDAO.delete(orderID, productID); 
+            int newStock = product.getProductStock() + orderProduct.getQuantity();
+            product.setProductStock(newStock);
+            productSqlDAO.updateStock(productID, newStock);
+            orderProduct.setQuantity(0);
+            session.setAttribute("opDeleteNotification", "Product " + orderProduct.getProductID() + " Is Deleted From "+orderID+"!");
+            orderProductSqlDAO.delete(orderID, productID);
+
         } catch (SQLException ex) {
             Logger.getLogger(DeleteOrderProductServlet.class.getName()).log(Level.SEVERE, null, ex);
         }

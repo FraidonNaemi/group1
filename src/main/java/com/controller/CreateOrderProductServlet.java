@@ -57,18 +57,16 @@ public class CreateOrderProductServlet extends HttpServlet {
                     productSqlDAO.updateStock(productID, newStock);
                     int newQuant = orderProduct.getQuantity() + 1;
                     orderProductSqlDAO.update(newQuant, orderID, productID);
-                    session.setAttribute("createNotification", "Added one more of the product to the last Order!");
+                    session.setAttribute("addNotification", "Current Quantity Of "+product.getProductName()+" Is Increased In "+orderID+", Current Quantity Is: "+orderProduct.getQuantity()+"");
                 } else {
                     product.decProductStock(1);
                     int newStock = product.getProductStock();
                     productSqlDAO.updateStock(productID, newStock);
                     orderProductSqlDAO.create(orderID, productID, 1);
-                    session.setAttribute("createNotification", "Product is added to the last Order!");
+                    session.setAttribute("createNotification", "Product "+product.getProductName()+" Is Added To "+orderID+"!");
                 }
 
-            } else {
-                session.setAttribute("stockError", "Not Enough Stock!");
-            }
+            } 
             session.setAttribute("orderID", orderID);
         } catch (SQLException ex) {
             Logger.getLogger(CreateOrderProductServlet.class.getName()).log(Level.SEVERE, null, ex);
