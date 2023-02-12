@@ -17,7 +17,8 @@ import javax.servlet.http.HttpSession;
  * @author group1
  */
 public class AddCustomerServlet extends HttpServlet {
-
+    // Get all the data and check it in within the database, if customer exists, redirect to add customer with
+    // appropriate error message. Else add the customer.
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
