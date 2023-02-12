@@ -21,7 +21,7 @@
                 <li><a class="active" href="#">Dashboard</a></li>
                 <li><a href="adminAccount.jsp">Account Management</a></li>
                 <li><a href="adminCustomerView.jsp">Customer Management</a></li>
-                <li><a href="adminProductView.jsp">Product Management</a></li>
+                <li><a href="productManagement.jsp">Product Management</a></li>
                 <li><a href="/group1/LogoutServlet">Logout</a></li>
             </ul>
         </nav>
