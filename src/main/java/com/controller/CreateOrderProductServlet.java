@@ -56,7 +56,7 @@ public class CreateOrderProductServlet extends HttpServlet {
                     int newStock = product.getProductStock();
                     productSqlDAO.updateStock(productID, newStock);
                     int newQuant = orderProduct.getQuantity() + 1;
-                    orderProduct.setQuantity(newQuant);
+                    orderProductSqlDAO.update(newQuant, orderID, productID);
                     session.setAttribute("createNotification", "Added one more of the product to the last Order!");
                 } else {
                     product.decProductStock(1);

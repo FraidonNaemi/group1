@@ -52,7 +52,7 @@ public class UpdateOrderServlet extends HttpServlet {
             int quantityBeforUpdate = orderProduct.getQuantity();
             //the product form the db
             Product product = productSqlDAO.getProduct(productID);
-            if (submitted != null && submitted.equals("submitted")) {
+            if (submitted != null && submitted.equals("submitted") && (quantity > 0)) {
 
                 //buying
                 if (quantity > quantityBeforUpdate) {

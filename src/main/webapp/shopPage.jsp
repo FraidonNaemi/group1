@@ -27,7 +27,8 @@
         <div class="container">
             <div class="card-header my-3">All Products</div>
             <div class="row">
-                <%                    if (!products.isEmpty()) {
+                <%
+                    if (!products.isEmpty()) {
                         for (Product p : products) {
                             if (p.getProductStock() > 0) {
                 %>

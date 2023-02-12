@@ -44,7 +44,6 @@ public class OrderSqlDAO {
         int orderID = 0;
         while (rs.next()) {
             orderID = Integer.parseInt(rs.getString(1));
-
         }
         return orderID;
     }
@@ -97,8 +96,8 @@ public class OrderSqlDAO {
         }
         return order;
     }
-
-    //Read an Order for a Customer(for WS for now)
+    
+        //Read an Order for a Customer(for WS for now)
     public Orders getAllOrdersByCustomerID(int customerID) throws SQLException {
         String fetch = "SELECT * FROM store.orders where customerID = " + customerID;
         ResultSet rs = st.executeQuery(fetch);

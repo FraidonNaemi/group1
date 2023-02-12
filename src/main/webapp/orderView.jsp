@@ -46,14 +46,14 @@ customer can update the order name here too-->
         <% String xslPath = application.getRealPath("/xsl/orderProducts.xsl");
             OrderProductSqlDAO orderProductSqlDAO = (OrderProductSqlDAO) session.getAttribute("orderProductSqlDAO");
             int orderID = Integer.parseInt(request.getParameter("orderID"));
-            session.setAttribute("orderID", orderID);
             OrderProducts orderProducts = new OrderProducts();
             orderProducts.addAll(orderProductSqlDAO.getAllOrderProducts(orderID));
             XmlTransformer transformer = new XmlTransformer();
             transformer.transform(xslPath, orderProducts, new StreamResult(out));
         %>
         <!-- Remove a product for the order -->
-        <span><a href="/group1/DeleteOrderServlet?orderID=<%= orderID%>">Delete this Order</a></span>
+        <span><a href="/group1/DeleteOrderServlet?orderID=<%= orderID %>">Delete this Order</a></span>
+        <% session.setAttribute("orderID", orderID); %>
         <!-- Clock - Footer -->
         <div class="clock">
             <span class="clock-time"></span>
