@@ -30,7 +30,7 @@ public class UpdateProductServlet extends HttpServlet {
             } catch (SQLException ex) {
                 Logger.getLogger(UpdateProductServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
-// get the parameter from(productDashboard.jsp) from the session 
+          // get the parameter from(productDashboard.jsp) from the session 
             String productImage = request.getParameter("productImage");
             String productName = request.getParameter("productName");
             String productPrice = request.getParameter("productPrice");
@@ -40,9 +40,10 @@ public class UpdateProductServlet extends HttpServlet {
             String productStock = request.getParameter("productStock");
             int theProductStock = Integer.parseInt(productStock);
             
-            
+            //update the local product
             product.update(productID, productImage, productName, theProductPrice, productCategory, productDescription, theProductStock);
             try {
+                //update the product inside the data base
                 productSqlDAO.update(productID, productImage, productName, theProductPrice, productCategory, productDescription,theProductStock);
             } catch (SQLException ex) {
                 Logger.getLogger(UpdateProductServlet.class.getName()).log(Level.SEVERE, null, ex);

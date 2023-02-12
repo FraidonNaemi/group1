@@ -31,6 +31,9 @@
 
         <%
             String userError = (String) session.getAttribute("userError");
+            String emailError = (String) session.getAttribute("emailError");
+            String passwordError = (String) session.getAttribute("passwordError");
+            String emailPasswordError = (String) session.getAttribute("emailPasswordError");
         %>
 
         <!-- Login  -->
@@ -38,6 +41,10 @@
             <header>Login</header>
             <div class="error-field-login"> 
                 <p><%= (userError != null) ? userError : ""%></p>
+                <p><%= (emailError != null) ? emailError : ""%></p>
+                <p><%= (passwordError != null) ? passwordError : ""%></p>
+                <p><%= (emailPasswordError != null) ? emailPasswordError : ""%></p>
+
             </div>
 
             <form method="POST" action="/group1/LoginServlet">
@@ -79,7 +86,15 @@
         </div>
         <%
             userError = "";
+            emailError = "";
+            passwordError = "";
+            emailPasswordError = "";
+
             session.setAttribute("userError", userError);
+            session.setAttribute("emailError", emailError);
+            session.setAttribute("passwordError", passwordError);
+            session.setAttribute("emailPasswordError", emailPasswordError);
+
         %>
 
         <!-- Footer -->

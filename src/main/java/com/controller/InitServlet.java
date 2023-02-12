@@ -28,7 +28,6 @@ public class InitServlet extends HttpServlet {
     private ProductSqlDAO productSqlDAO;
     private OrderSqlDAO orderSqlDAO;
     private OrderProductSqlDAO orderProductSqlDAO;
-
     private SqlDBConnector dBConnector;
     private Connection connection;
 
@@ -66,7 +65,6 @@ public class InitServlet extends HttpServlet {
         session.setAttribute("productSqlDAO", productSqlDAO);
         session.setAttribute("orderSqlDAO", orderSqlDAO);
         session.setAttribute("orderProductSqlDAO", orderProductSqlDAO);
-
     }
 
     @Override

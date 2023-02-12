@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
  * @author group1
  */
 public class DeleteCustomerServlet extends HttpServlet {
-    // Get the customer email and delete it from database by email
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

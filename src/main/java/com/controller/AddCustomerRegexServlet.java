@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
  * @author group1
  */
 public class AddCustomerRegexServlet extends HttpServlet {
-    // Getting the data from addCustomer.jsp and validating against regEx
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -54,7 +54,7 @@ public class AddCustomerRegexServlet extends HttpServlet {
             session.setAttribute("customerPasswordError", "Incorrect format");
             customerPasswordError = true;
         } if (!customerDOB.matches(customerDOBRegEx)) {
-            session.setAttribute("customerDOBError", "10 to 100 years allowed");
+            session.setAttribute("customerDOBError", "Incorrect format");
             customerDOBError = true;
         } if (!customerPhoneNumber.matches(customerPhoneNumberRegEx)) {
             session.setAttribute("customerPhoneNumberError", "Incorrect format");
@@ -63,14 +63,13 @@ public class AddCustomerRegexServlet extends HttpServlet {
             session.setAttribute("customerAddressError", "Incorrect format");
             customerAddressError = true;
         }
-        // Checking if any of the fields doesn't meet the regEx rule, then redirect to addCustomer.jsp page
-        // with appropriate error message. Or else redirect it to addCustomerServlet for adding to the database.
-        if (customerNameError
-                || customerEmailError
-                || customerPasswordError
-                || customerDOBError
-                || customerPhoneNumberError
-                || customerAddressError) {
+
+        if (customerNameError == true
+                || customerEmailError == true
+                || customerPasswordError == true
+                || customerDOBError == true
+                || customerPhoneNumberError == true
+                || customerAddressError == true) {
             request.getRequestDispatcher("addCustomer.jsp").include(request, response);
         } else {
             request.getRequestDispatcher("/AddCustomerServlet").include(request, response);

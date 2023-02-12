@@ -30,7 +30,7 @@ public class RegexRegisterProductServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
         ProductSqlDAO productSqlDAO = (ProductSqlDAO) session.getAttribute("productSqlDAO");
-// get the parameter from(registerProduct.jsp) from the session 
+        // get the parameter from(registerProduct.jsp) from the session 
         String productImage = request.getParameter("productImage");
         String productName = request.getParameter("productName");
         String productPrice = request.getParameter("productPrice");
@@ -44,12 +44,12 @@ public class RegexRegisterProductServlet extends HttpServlet {
         String productPriceRegEx = "([0-9]+)[.]([0-9]+)";
         String productDescriptionRegex = "([a-zA-Z0-9 ]{2,1000})";
         String productStockRegex = "([0-9]+)";
-         
+        //flag to return the error message
         boolean productNameError = false;
         boolean productPriceError = false;
         boolean productDescriptionError = false;
         boolean productStockError = false;
-
+        //match the regex
         if (!productName.matches(productNameRegEx)) {
             session.setAttribute("productNameError", "Incorrect format");
             productNameError = true;
@@ -62,19 +62,19 @@ public class RegexRegisterProductServlet extends HttpServlet {
             session.setAttribute("productDescriptionError", "Incorrect format");
             productDescriptionError = true;
         }
-        if ((!productStock.matches(productStockRegex )) && theProductStock < 0 ) {
-            session.setAttribute("productPriceError", "Incorrect format");
+        if ((!productStock.matches(productStockRegex)) && theProductStock < 0) {
+            session.setAttribute("productStockError", "Incorrect format");
             productStockError = true;
         }
-        
+        //if any field doesnt meet the regex return to register page
         if (productNameError == true
                 || productPriceError == true
                 || productDescriptionError == true
                 || productStockError == true) {
             request.getRequestDispatcher("registerProduct.jsp").include(request, response);
         } else {
-                 request.getRequestDispatcher("/RegisterProductServlet").include(request, response);
+            request.getRequestDispatcher("/RegisterProductServlet").include(request, response);
 
-}
+        }
     }
 }

@@ -57,11 +57,11 @@
             <form class="updateForm" method="POST" action="/group1/AdminCustomerAccountServlet">
                 <div class="form first">
                     <div class="personal-details">
-                        <span class="title">ID <%=customer.getCustomerID()%></span>
+                        <span class="title">ID: <%=customer.getCustomerID()%></span>
 
                         <div class="fields">
                             <div class="input-field">
-                                <label for="customerName">Full Name<span class="updateCustomerError">&emsp;<%= (customerNameError != null) ? customerNameError : ""%></span></label>
+                                <label for="customerName">Full Name <span class="updateCustomerError">&emsp;<%= (customerNameError != null) ? customerNameError : ""%></span></label>
                                 <input type="text" name="customerName" value="<%= (customerNameError != null && !customerNameError.isEmpty()) ? "" : customer.getCustomerName()%>">
                             </div>
 
@@ -71,7 +71,7 @@
                             </div>
 
                             <div class="input-field">
-                                <label for="customerPassword">Password &emsp;<span class="updateCustomerError"> &emsp;<%= (customerPasswordError != null) ? customerPasswordError : ""%></span></label>
+                                <label for="customerPassword">Password &emsp;<span class="updateCustomerError">&emsp;<%= (customerPasswordError != null) ? customerPasswordError : ""%></span></label>
                                 <input type="text" name="customerPassword" value="<%= (customerPasswordError != null && !customerPasswordError.isEmpty()) ? "" : customer.getCustomerPassword()%>">
                             </div>
 

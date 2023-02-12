@@ -16,21 +16,21 @@
     <xsl:template match="customers">
         <table class="content-table" style="margin-top:100px!important;">
             <thead>
-                <tr class="customerList">
-                    <th colspan="6">
+                <tr>
+                    <th colspan="7">
                         <h3>Customers List</h3>
                     </th>
-                    <tr class="customerHeaderItems" style="text-align: left; background-color: #f8f8f8; color: black; font-size: 18px;">
-                        <td class="td-title">ID</td>
-                        <td class="td-title">Name</td>
-                        <td class="td-title">Email</td>
-                        <td class="td-title">Date of Birth</td>
-                        <td class="td-title">Phone Number</td>
-                        <td class="td-title">Address</td>
-                    </tr>
                 </tr>
             </thead>
             <tbody>
+                <tr>
+                    <td class="td-title">ID</td>
+                    <td class="td-title">Name</td>
+                    <td class="td-title">Email</td>
+                    <td class="td-title">Date of Birth</td>
+                    <td class="td-title">Phone Number</td>
+                    <td class="td-title">Address</td>
+                </tr>
                 <xsl:apply-templates/>
             </tbody>
         </table>

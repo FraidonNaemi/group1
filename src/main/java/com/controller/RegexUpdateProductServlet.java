@@ -26,7 +26,7 @@ public class RegexUpdateProductServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
         ProductSqlDAO productSqlDAO = (ProductSqlDAO) session.getAttribute("productSqlDAO");
-// get the parameter from(registerProduct.jsp) from the session 
+        // get the parameter from(registerProduct.jsp) from the session 
         String productImage = request.getParameter("productImage");
         String productName = request.getParameter("productName");
         String productPrice = request.getParameter("productPrice");
@@ -42,11 +42,11 @@ public class RegexUpdateProductServlet extends HttpServlet {
         String productPriceRegEx = "([0-9]+)[.]([0-9]+)";
         String productDescriptionRegex = "([a-zA-Z0-9 ]{2,1000})";
         String productStockRegex = "([0-9]+)";
-
+        //flag to return the error message
         boolean productPriceError = false;
         boolean productDescriptionError = false;
         boolean productStockError = false;
-
+        //match the regex
         if (!productPrice.matches(productPriceRegEx)) {
             session.setAttribute("productPriceError", "Incorrect format");
             productPriceError = true;
@@ -56,10 +56,10 @@ public class RegexUpdateProductServlet extends HttpServlet {
             productDescriptionError = true;
         }
         if ((!productStock.matches(productStockRegex)) && theProductStock < 0) {
-            session.setAttribute("productPriceError", "Incorrect format");
+            session.setAttribute("productStockError", "Incorrect format");
             productStockError = true;
         }
-
+        //if any field doesnt meet the regex return to dashboard page
         if (productPriceError == true
                 || productDescriptionError == true
                 || productStockError == true) {

@@ -16,8 +16,6 @@ import javax.servlet.http.HttpSession;
  * @author group1
  */
 public class AdminCustomerAccountServlet extends HttpServlet {
-    // Get all the data from adminAccount.jsp page, validate them against regEx. If they do not meets the regEx;
-    // redirect to adminAccount.jsp page with approprite error message. Else, update it.
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -40,7 +38,7 @@ public class AdminCustomerAccountServlet extends HttpServlet {
                 
                 String customerNameRegEx = "([A-Za-z]{2,25})[ ]([A-Za-z]{2,24})";
                 String customerPasswordRegEx = "([A-Z][a-z]{5,14})([\\d]{3,6})";
-                String customerDOBRegEx = "^(19[2-9][3-9]|20[0-1][0-3])-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$";
+                String customerDOBRegEx = "([\\d]{2,2})([\\d]{2,2})([\\d]{4,4})";
                 String customerPhoneNumberRegEx = "^[\\+\\d]\\d{9,11}$";
                 String customerAddressRegEx = "([\\d]{1,4})([A-Za-z\\s\\d\\,\\-\\/]{10,97})";
                 
@@ -58,7 +56,7 @@ public class AdminCustomerAccountServlet extends HttpServlet {
                     customerPasswordError = true;
                 } if (!customerDOB.matches(customerDOBRegEx)) {
                     session.setAttribute("customerDOBError", "Incorrect format");
-                    customerDOBError = true;
+                    //customerDOBError = true;
                 } if (!customerPhoneNumber.matches(customerPhoneNumberRegEx)) {
                     session.setAttribute("customerPhoneNumberError", "Incorrect format");
                     customerPhoneNumberError = true;
@@ -81,6 +79,7 @@ public class AdminCustomerAccountServlet extends HttpServlet {
                     request.getRequestDispatcher("adminCustomerAccount.jsp").include(request, response);
                 } else {
                     customer.update(customerID, customerName, customerEmail, customerPassword, customerDOB, customerPhoneNumber, customerAddress);
+                    // customerSqlDAO.update(customerName, customerEmail, customerPassword, customerDOB, customerPhoneNumber, customerAddress, customerID);
                     customerSqlDAO.update(customerName, customerPassword, customerDOB, customerPhoneNumber, customerAddress, customerID);
                     session.setAttribute("customer", customer);
                     request.getRequestDispatcher("adminCustomerView.jsp").include(request, response);

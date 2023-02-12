@@ -29,23 +29,29 @@ public class ProductSearchServlet extends HttpServlet {
             throws ServletException, IOException {
 
         HttpSession session = request.getSession();
+
         ProductSqlDAO productSqlDAO = (ProductSqlDAO) session.getAttribute("productSqlDAO");
-            int productID = Integer.parseInt(request.getParameter("productID"));
-        Product product=null;
+        //GET THE product id
+        int productID = Integer.parseInt(request.getParameter("productID"));
+        //declare and initialise to null 
+        Product product = null;
         try {
-         product =productSqlDAO.getProduct(productID);
+            //search fro the product by id
+            product = productSqlDAO.getProduct(productID);
         } catch (SQLException ex) {
             Logger.getLogger(ProductSearchServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        if (product != null){
-             session.setAttribute("product", product);
+        if (product != null) {
+            //if we have the product inside the database set it to the session
+            session.setAttribute("product", product);
             request.getRequestDispatcher("productDashboard.jsp").include(request, response);
-        }else{
+        } else {
+            //return error message
             session.setAttribute("productError", "product is not found");
-        request.getRequestDispatcher("adminProductView.jsp").include(request, response);
+            request.getRequestDispatcher("adminProductView.jsp").include(request, response);
 
         }
-        
+
     }
 
 }

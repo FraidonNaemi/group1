@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Handwriting:400,500,600,700&display=swap');
 
@@ -17,6 +18,7 @@
 
     /* dark navbar color */
     --teriary-color: #1b1b1b;
+
 }
 
 body {
@@ -40,11 +42,7 @@ body {
     white-space: nowrap;
 }
 
-.customerHeaderItems {
-    background-color: #f8f8f8;
-}
-
-.customerList {
+.content-table thead tr {
     background-color: #1b1b1b;
     color: #ffffff;
     text-align: center;

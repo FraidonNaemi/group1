@@ -16,7 +16,7 @@
         <!-- Navigation Bar -->
         <nav>
             <div class="logo">
-                AFSY
+                Ab | Fr
             </div>
             <input type="checkbox" id="click">
             <label for="click" class="menu-btn">
